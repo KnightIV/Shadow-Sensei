@@ -27,10 +27,10 @@ public class Playback : MonoBehaviour, ISkeletonProvider {
     void Start() {
         RefreshSkeletonFrames();
 
-        if (TrimSlider != null) {
-            TrimSlider.ResetToMaxRange();
-            TrimSlider.OnSlidersChanged += SetStartEndFrames;
-        }
+        //if (TrimSlider != null) {
+        //    TrimSlider.ResetToMaxRange();
+        //    TrimSlider.OnSlidersChanged += SetStartEndFrames;
+        //}
     }
 
     void FixedUpdate() {

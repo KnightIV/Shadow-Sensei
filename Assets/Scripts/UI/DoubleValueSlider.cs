@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+
+[Serializable]
+public class SlidersChanged : UnityEvent<float, float> { }
 
 public class DoubleValueSlider : MonoBehaviour {
 
-    public delegate void SlidersValuesChanged(float lesserValue, float greaterValue);
-
     public Slider MainSlider;
     public Slider CompanionSlider;
-    public event SlidersValuesChanged OnSlidersChanged;
+    public SlidersChanged OnSlidersChanged;
 
     public float LesserValue {
         get { return Mathf.Min(MainSlider.value, CompanionSlider.value); }
