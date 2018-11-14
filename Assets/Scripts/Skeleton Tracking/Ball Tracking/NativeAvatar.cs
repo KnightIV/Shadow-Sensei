@@ -5,7 +5,7 @@ using UnityEngine;
 using nuitrack;
 using Vector3 = UnityEngine.Vector3;
 
-public class NativeAvatar : MonoBehaviour, ISkeletonProvider {
+public class NativeAvatar : MonoBehaviour, ISkeletonProvider, IAvatar {
 
     public GameObject PrefabJoint;
     public string JointNameModifier;
@@ -15,12 +15,13 @@ public class NativeAvatar : MonoBehaviour, ISkeletonProvider {
     public Vector3 JointTrackerOffsetDistance;
     public JointTracker[] JointTrackers;
 
-    public SerializableSkeleton CurSkeleton => JointTrackers[0].SkeletonProvider.CurSkeleton;
+    public ISkeletonProvider SkeletonProvider { get; protected set; }
+    public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
     void Start() {
         JointType[] typeJoint = Enum.GetValues(typeof(JointType)).Cast<JointType>().ToArray();
         JointTrackers = new JointTracker[typeJoint.Length];
-        CurrentUserTracker userTrackerInstance = CurrentUserTracker.Instance;
+        SkeletonProvider = CurrentUserTracker.Instance;
 
         Vector3 origin = new Vector3(TorsoX, TorsoY, TorsoZ);
 
@@ -36,13 +37,15 @@ public class NativeAvatar : MonoBehaviour, ISkeletonProvider {
             tracker.Origin = origin;
             tracker.JointType = typeJoint[i];
             tracker.OffsetJointType = JointType.Waist;
-            tracker.SkeletonProvider = userTrackerInstance;
+            tracker.SkeletonProvider = SkeletonProvider;
             tracker.Enabled = IsEnabled;
             JointTrackers[i] = tracker;
         }
     }
 
     public void SwapSkeletonProvider(ISkeletonProvider provider) {
+        SkeletonProvider = provider;
+
         for (int i = 0; i < JointTrackers.Length; i++) {
             JointTrackers[i].SkeletonProvider = provider;
         }
