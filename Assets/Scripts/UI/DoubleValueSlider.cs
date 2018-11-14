@@ -45,10 +45,10 @@ public class DoubleValueSlider : MonoBehaviour {
     }
 
     private float pixelsPerUnit;
-    private RectTransform handle;
+    private RectTransform mainHandle;
 
     void Awake() {
-        handle = MainSlider.handleRect;
+        mainHandle = MainSlider.handleRect;
 
         MainSlider.onValueChanged.AddListener(OnSliderChanged);
         CompanionSlider.onValueChanged.AddListener(OnSliderChanged);
@@ -61,7 +61,7 @@ public class DoubleValueSlider : MonoBehaviour {
         }
 
         MainSlider.fillRect.rotation = new Quaternion(0, 0, 0, 0);
-        MainSlider.fillRect.pivot = new Vector2(handle.transform.parent.localPosition.x, MainSlider.fillRect.pivot.y);
+        MainSlider.fillRect.pivot = new Vector2(mainHandle.transform.parent.localPosition.x, MainSlider.fillRect.pivot.y);
         
         if (MainSlider.value >= CompanionSlider.value) {
             MainSlider.fillRect.Rotate(0, 0, 180);
@@ -70,7 +70,7 @@ public class DoubleValueSlider : MonoBehaviour {
         float valueDifference = Mathf.Abs(LesserValue - GreaterValue);
         MainSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pixelsPerUnit * valueDifference);
 
-        MainSlider.fillRect.localPosition = handle.localPosition;
+        MainSlider.fillRect.localPosition = mainHandle.localPosition;
     }
 
     private void OnSliderChanged(float _) {
