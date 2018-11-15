@@ -6,7 +6,7 @@ using UnityEngine;
 using nuitrack;
 using Vector3 = UnityEngine.Vector3;
 
-public class NativeAvatar : MonoBehaviour, ISkeletonProvider, IAvatar {
+public class NativeAvatar : MonoBehaviour, IAvatar {
 
     public GameObject PrefabJoint;
     public string JointNameModifier;

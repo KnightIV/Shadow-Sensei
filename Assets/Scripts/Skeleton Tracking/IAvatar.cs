@@ -1,7 +1,7 @@
 ﻿using nuitrack;
 using UnityEngine;
 
-public interface IAvatar {
+public interface IAvatar : ISkeletonProvider {
 
     ISkeletonProvider SkeletonProvider { get; }
 
