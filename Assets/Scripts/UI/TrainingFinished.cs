@@ -16,34 +16,41 @@ public class TrainingFinished : MonoBehaviour {
     public Text FrameScoreText;
 
     private SkeletonComparer comparer;
-    
-	void Start() { 
-		comparer = new AngleSkeletonComparer(CurveProvider.Curve);
-	}
-	
-	void FixedUpdate () {
-	    ComparisonFrameData comparison = comparer.Compare(UserNativeAvatar.CurSkeleton, TechniqueNativeAvatar.CurSkeleton);
-	    JointTracker[] userTrackers = UserNativeAvatar.JointTrackers;
 
-	    foreach (JointTracker tracker in userTrackers) {
-	        float jointScore = comparison[tracker.JointType];
+    void Start() {
+        comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+    }
 
-	        tracker.Color.g = jointScore;
-	        tracker.Color.b = jointScore;
-	    }
+    void FixedUpdate() {
+        ComparisonFrameData comparison = comparer.Compare(UserNativeAvatar.CurSkeleton, TechniqueNativeAvatar.CurSkeleton);
+        UserNativeAvatar.SetColor(comparison);
 
-	    float totalScore = comparison.TotalScore;
+        //foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
+        //    JointType type = result.Key;
+        //       float score = 
+        //}
+
+        //JointTracker[] userTrackers = UserNativeAvatar.JointTrackers;
+
+        //foreach (JointTracker tracker in userTrackers) {
+        //    float jointScore = comparison[tracker.JointType];
+
+        //    tracker.Color.g = jointScore;
+        //    tracker.Color.b = jointScore;
+        //}
+
+        float totalScore = comparison.TotalScore;
         FrameScoreBar.UpdateScore(totalScore);
-	    //Color textColor;
-	    //if (totalScore > 0.5f) {
-	    //    textColor = Color.Lerp(Color.yellow, Color.green, (totalScore - 0.5f) * 2);
-	    //} else {
-	    //    textColor = Color.Lerp(Color.red, Color.yellow, totalScore * 2);
-	    //}
+        //Color textColor;
+        //if (totalScore > 0.5f) {
+        //    textColor = Color.Lerp(Color.yellow, Color.green, (totalScore - 0.5f) * 2);
+        //} else {
+        //    textColor = Color.Lerp(Color.red, Color.yellow, totalScore * 2);
+        //}
 
-	    //FrameScoreText.text = $"{comparison.TotalScorePercent:F2}%";
-	    //FrameScoreText.color = textColor;
-	}
+        //FrameScoreText.text = $"{comparison.TotalScorePercent:F2}%";
+        //FrameScoreText.color = textColor;
+    }
 
     public void SetupTrainingFinished(IEnumerable<Skeleton> recordedFrames) {
         VariableHolder.RecordedSkeletonFrames = recordedFrames.Select(s => (SerializableSkeleton) s).ToArray();

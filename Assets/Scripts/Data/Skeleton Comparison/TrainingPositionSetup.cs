@@ -33,18 +33,26 @@ public class TrainingPositionSetup : MonoBehaviour {
 
             if (userSkeleton != null) {
                 Skeleton techniqueSkeleton = TechniqueNativeAvatar.CurSkeleton;
-
                 ComparisonFrameData result = Comparer.Compare(userSkeleton, techniqueSkeleton);
 
-                for (int i = 0; i < UserNativeAvatar.JointTrackers.Length; i++) {
-                    JointTracker tracker = UserNativeAvatar.JointTrackers[i];
-                    tracker.Color.g = result[tracker.JointType];
-                    tracker.Color.b = result[tracker.JointType];
+                UserNativeAvatar.SetColor(result);
 
-                    if (result[tracker.JointType] < 0) {
-                        Debug.Log(result[tracker.JointType]);
-                    }
-                }
+                //foreach (KeyValuePair<JointType, float> resultScore in result.JointScores) {
+                //    JointType type = resultScore.Key;
+                //    float score = resultScore.Value;
+
+                //    UserNativeAvatar.SetColor(type, new Color(1, score, score));
+                //}
+
+                //for (int i = 0; i < UserNativeAvatar.JointTrackers.Length; i++) {
+                //    JointTracker tracker = UserNativeAvatar.JointTrackers[i];
+                //    tracker.Color.g = result[tracker.JointType];
+                //    tracker.Color.b = result[tracker.JointType];
+
+                //    if (result[tracker.JointType] < 0) {
+                //        Debug.Log(result[tracker.JointType]);
+                //    }
+                //}
 
                 totalScore = result.TotalScore;
 
