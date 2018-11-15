@@ -58,7 +58,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     private void PositionSkeleton(Skeleton s) {
         Vector3 torsoPos;
         if (Bound) {
-            torsoPos = Quaternion.Euler(0f, 180f, 0f) * BoundPos;
+            torsoPos = BoundPos;
         } else {
             torsoPos = Quaternion.Euler(0f, 180f, 0f) * (0.001f * s.GetJoint(JointType.Torso).ToVector3());
         }
