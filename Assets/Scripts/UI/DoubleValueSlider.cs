@@ -52,6 +52,8 @@ public class DoubleValueSlider : MonoBehaviour {
 
         MainSlider.onValueChanged.AddListener(OnSliderChanged);
         CompanionSlider.onValueChanged.AddListener(OnSliderChanged);
+
+        ResetToMaxRange();
     }
 
     void FixedUpdate() {
