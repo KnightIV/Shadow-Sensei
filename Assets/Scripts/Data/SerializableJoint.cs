@@ -12,7 +12,7 @@ public struct SerializableJoint {
     public float Confidence; 
     public Vector3 Real;
     public Vector3 Proj;
-    public Orientation Orient;
+    public SerializableOrientation Orient;
 
     public static implicit operator Joint(SerializableJoint j) {
         return new Joint {
