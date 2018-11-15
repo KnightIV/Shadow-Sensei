@@ -64,6 +64,8 @@ public class Playback : MonoBehaviour, ISkeletonProvider {
             if (TrimSlider != null) {
                 TrimSlider.MinValue = StartFrame;
                 TrimSlider.MaxValue = EndFrame;
+
+                TrimSlider.ResetToMaxRange();
             }
 
             Debug.Log("SkeletonFrames successfully loaded");
