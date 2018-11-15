@@ -28,6 +28,14 @@ public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
         SkeletonProvider = newProvider;
     }
 
+    public void SetColor(JointType jointType, Color color) {
+        throw new NotImplementedException();
+    }
+
+    public void SetColor(ComparisonFrameData comparison) {
+        throw new NotImplementedException();
+    }
+
     private void PositionSkeleton(Skeleton s) {
         Vector3 torsoPos = Quaternion.Euler(Vector3.zero) * (0.001f * s.GetJoint(JointType.Torso).ToVector3());
         transform.position = torsoPos;

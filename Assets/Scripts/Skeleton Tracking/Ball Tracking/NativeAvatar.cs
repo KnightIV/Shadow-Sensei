@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -51,10 +52,28 @@ public class NativeAvatar : MonoBehaviour, ISkeletonProvider, IAvatar {
         }
     }
 
+    public void SetColor(JointType jointType, Color color) {
+        JointTracker tracker = FindTracker(jointType);
+        tracker.Color = color;
+    }
+
+    public void SetColor(ComparisonFrameData comparison) {
+        foreach (KeyValuePair<JointType, float> resultScore in comparison.JointScores) {
+            JointType type = resultScore.Key;
+            float score = resultScore.Value;
+
+            SetColor(type, new Color(1, score, score));
+        }
+    }
+
     // ReSharper disable once ParameterHidesMember
     public void SetEnabled(bool enabled) {
         for (int i = 0; i < JointTrackers.Length; i++) {
             JointTrackers[i].Enabled = enabled;
         }
+    }
+
+    private JointTracker FindTracker(JointType type) {
+        return JointTrackers.First(t => t.JointType == type);
     }
 }
