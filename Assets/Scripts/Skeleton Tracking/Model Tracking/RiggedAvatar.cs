@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using nuitrack;
 using UnityEngine;
 using Joint = nuitrack.Joint;
 using Vector3 = UnityEngine.Vector3;
 
-public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
+public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     [Header("Rigged Model")] public RiggedModelJoint[] ModelJoints;
+    public bool Bound;
+    public Vector3 BoundPos;
 
     public ISkeletonProvider SkeletonProvider { get; protected set; }
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
@@ -23,8 +26,8 @@ public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
 
     void FixedUpdate() {
         if (SkeletonProvider?.CurSkeleton != null) {
-            //PositionSkeleton(SkeletonProvider.CurSkeleton);
-            CalculateRotation(SkeletonProvider.CurSkeleton);
+            PositionSkeleton(SkeletonProvider.CurSkeleton);
+            RotateBones(SkeletonProvider.CurSkeleton);
         }
     }
 
@@ -41,18 +44,24 @@ public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
     }
 
     private void PositionSkeleton(Skeleton s) {
-        Vector3 torsoPos = Quaternion.Euler(Vector3.zero) * (0.001f * s.GetJoint(JointType.Torso).ToVector3());
+        Vector3 torsoPos;
+        if (Bound) {
+            torsoPos = Quaternion.Euler(0f, 180f, 0f) * BoundPos;
+        } else {
+            torsoPos = Quaternion.Euler(0f, 180f, 0f) * (0.001f * s.GetJoint(JointType.Torso).ToVector3());
+        }
         transform.position = torsoPos;
     }
 
-    private void CalculateRotation(Skeleton s) {
+    private void RotateBones(Skeleton s) {
         foreach (RiggedModelJoint riggedModelJoint in ModelJoints) {
             Joint joint = s.GetJoint(riggedModelJoint.JointType);
             Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
-
-            //jointOrientation.z = -jointOrientation.z;
-            //Quaternion jointOrientation = joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
             riggedModelJoint.Bone.rotation = jointOrientation;
         }
+    }
+
+    private RiggedModelJoint FindJoint(JointType type) {
+        return ModelJoints.First(m => m.JointType == type);
     }
 }
