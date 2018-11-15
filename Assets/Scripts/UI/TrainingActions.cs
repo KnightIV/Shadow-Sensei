@@ -9,8 +9,9 @@ using UnityEngine.UI;
 
 public class TrainingActions : MonoBehaviour {
 
-    public NativeAvatar PlaybackAvatar;
-    public NativeAvatar UserAvatar;
+    public NativeAvatar PlaybackNativeAvatar, UserNativeAvatar;
+    public RiggedAvatar PlaybackRiggedAvatar, UserRiggedAvatar;
+
     public Playback Playback, FinishedPlayback;
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FinalScoreBar;
@@ -19,6 +20,12 @@ public class TrainingActions : MonoBehaviour {
 
     private Technique technique;
     private SkeletonComparer comparer;
+    private IAvatar PlaybackAvatar, UserAvatar;
+
+    void Start() {
+        PlaybackAvatar = PlaybackRiggedAvatar as IAvatar ?? PlaybackNativeAvatar;
+        UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
+    }
 
     public void Init(Technique t) {
         technique = t;

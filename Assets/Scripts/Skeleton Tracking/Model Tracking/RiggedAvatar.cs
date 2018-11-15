@@ -16,12 +16,16 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     public ISkeletonProvider SkeletonProvider { get; protected set; }
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
+    [SerializeField] private bool isEnabled;
+
     void Start() {
         SkeletonProvider = CurrentUserTracker.Instance;
 
         foreach (RiggedModelJoint modelJoint in ModelJoints) {
             modelJoint.BaseRotOffset = modelJoint.Bone.rotation;
         }
+
+        SetEnabled(isEnabled);
     }
 
     void FixedUpdate() {
@@ -41,6 +45,14 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     public void SetColor(ComparisonFrameData comparison) {
         throw new NotImplementedException();
+    }
+
+    public void SetEnabled(bool isEnabled) {
+        this.isEnabled = isEnabled;
+
+        foreach (Renderer rendererComponent in gameObject.GetComponentsInChildren<Renderer>()) {
+            rendererComponent.enabled = isEnabled;
+        }
     }
 
     private void PositionSkeleton(Skeleton s) {

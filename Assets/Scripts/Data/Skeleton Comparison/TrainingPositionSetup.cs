@@ -41,11 +41,11 @@ public class TrainingPositionSetup : MonoBehaviour {
                 //    JointType type = resultScore.Key;
                 //    float score = resultScore.Value;
 
-                //    UserNativeAvatar.SetColor(type, new Color(1, score, score));
+                //    UserAvatar.SetColor(type, new Color(1, score, score));
                 //}
 
-                //for (int i = 0; i < UserNativeAvatar.JointTrackers.Length; i++) {
-                //    JointTracker tracker = UserNativeAvatar.JointTrackers[i];
+                //for (int i = 0; i < UserAvatar.JointTrackers.Length; i++) {
+                //    JointTracker tracker = UserAvatar.JointTrackers[i];
                 //    tracker.Color.g = result[tracker.JointType];
                 //    tracker.Color.b = result[tracker.JointType];
 
