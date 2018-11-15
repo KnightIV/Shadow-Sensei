@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class TrainingPositionSetup : MonoBehaviour {
 
+    public NativeAvatar UserNativeAvatar;
+    public NativeAvatar TechniqueNativeAvatar;
+    public RiggedAvatar UserRiggedAvatar, TechniqueRiggedAvatar;
+
     public SkeletonComparer Comparer;
     public CountdownTimer CountdownTimer;
-    public NativeAvatar UserNativeAvatar;
     public Playback UserPlayback;
-    public NativeAvatar TechniqueNativeAvatar;
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider ScoreBar;
 
     private bool isEnabled;
+    private IAvatar UserAvatar, TechniqueAvatar;
 
     #region Debug
 
@@ -24,6 +27,8 @@ public class TrainingPositionSetup : MonoBehaviour {
 
     void Start() {
         Comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+        UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
+        TechniqueAvatar = TechniqueRiggedAvatar as IAvatar ?? TechniqueNativeAvatar;
     }
 
     void FixedUpdate() {
@@ -32,10 +37,10 @@ public class TrainingPositionSetup : MonoBehaviour {
             float totalScore = 0;
 
             if (userSkeleton != null) {
-                Skeleton techniqueSkeleton = TechniqueNativeAvatar.CurSkeleton;
+                Skeleton techniqueSkeleton = TechniqueAvatar.CurSkeleton;
                 ComparisonFrameData result = Comparer.Compare(userSkeleton, techniqueSkeleton);
 
-                UserNativeAvatar.SetColor(result);
+                UserAvatar.SetColor(result);
 
                 //foreach (KeyValuePair<JointType, float> resultScore in result.JointScores) {
                 //    JointType type = resultScore.Key;
