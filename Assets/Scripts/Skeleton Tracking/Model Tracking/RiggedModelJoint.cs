@@ -9,5 +9,5 @@ public class RiggedModelJoint {
 
     public Transform Bone;
     public JointType JointType;
-    [HideInInspector] public Quaternion BaseRotOffset;
+    public Quaternion BaseRotOffset;
 }

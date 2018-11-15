@@ -15,11 +15,15 @@ public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
 
     void Start() {
         SkeletonProvider = CurrentUserTracker.Instance;
+
+        foreach (RiggedModelJoint modelJoint in ModelJoints) {
+            modelJoint.BaseRotOffset = modelJoint.Bone.rotation;
+        }
     }
 
     void FixedUpdate() {
         if (SkeletonProvider?.CurSkeleton != null) {
-            PositionSkeleton(SkeletonProvider.CurSkeleton);
+            //PositionSkeleton(SkeletonProvider.CurSkeleton);
             CalculateRotation(SkeletonProvider.CurSkeleton);
         }
     }
@@ -45,6 +49,9 @@ public class RiggedAvatar : MonoBehaviour, IAvatar, ISkeletonProvider {
         foreach (RiggedModelJoint riggedModelJoint in ModelJoints) {
             Joint joint = s.GetJoint(riggedModelJoint.JointType);
             Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
+
+            //jointOrientation.z = -jointOrientation.z;
+            //Quaternion jointOrientation = joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
             riggedModelJoint.Bone.rotation = jointOrientation;
         }
     }
