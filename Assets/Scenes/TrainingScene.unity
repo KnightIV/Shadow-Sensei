@@ -4668,10 +4668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fbff736b8b6314c999b9c4e054106a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountdownTimer: {fileID: 1567914324}
   UserNativeAvatar: {fileID: 873813599}
-  UserPlayback: {fileID: 2080357589}
   TechniqueNativeAvatar: {fileID: 2080357588}
+  UserRiggedAvatar: {fileID: 0}
+  TechniqueRiggedAvatar: {fileID: 0}
+  CountdownTimer: {fileID: 1567914324}
+  UserPlayback: {fileID: 2080357589}
   CurveProvider: {fileID: 114619705913701818, guid: ce4b9a3a5b604e24090ba00a64a1cb41,
     type: 2}
   ScoreBar: {fileID: 971272137}
