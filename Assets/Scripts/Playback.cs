@@ -26,11 +26,6 @@ public class Playback : MonoBehaviour, ISkeletonProvider {
 
     void Start() {
         RefreshSkeletonFrames();
-
-        //if (TrimSlider != null) {
-        //    TrimSlider.ResetToMaxRange();
-        //    TrimSlider.OnSlidersChanged += SetStartEndFrames;
-        //}
     }
 
     void FixedUpdate() {
@@ -110,14 +105,6 @@ public class Playback : MonoBehaviour, ISkeletonProvider {
 
         StartFrame = (int) start;
         EndFrame = (int) end;
-
-        //if (CurFrame < StartFrame) {
-        //    PlaybackSlider.value = StartFrame;
-        //} else if (CurFrame > EndFrame) {
-        //    PlaybackSlider.value = EndFrame;
-        //}
-
-        //UpdateFrame();
 
         if (Mathf.Abs(start - prevStartFrame) <= 0.0000001f) {
             // EndFrame changed
