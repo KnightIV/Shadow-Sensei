@@ -5,7 +5,7 @@ using nuitrack;
 using UnityEngine;
 
 [Serializable]
-public class RiggedModelJoint : MonoBehaviour {
+public class RiggedModelJoint {
 
     public Transform Bone;
     public JointType JointType;
