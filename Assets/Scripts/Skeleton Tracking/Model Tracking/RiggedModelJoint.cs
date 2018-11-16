@@ -11,4 +11,8 @@ public class RiggedModelJoint {
     public JointType JointType;
 
     [HideInInspector] public Quaternion BaseRotOffset;
+
+    public void Colorize(Color c) {
+
+    }
 }
