@@ -2029,14 +2029,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483572890059322}
-  m_LocalRotation: {x: 0.18658338, y: 0.64741385, z: 0.23312607, w: -0.7012092}
+  m_LocalRotation: {x: 0.0888701, y: 0.6628758, z: 0.14789389, w: -0.7285776}
   m_LocalPosition: {x: 0.0000058391315, y: 0.0015373578, z: -0.00000032902548}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_Children:
   - {fileID: 4807373215069388}
   m_Father: {fileID: 4858920324177984}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -34.3, y: 276.4, z: -5.93}
+  m_LocalEulerAnglesHint: {x: -19, y: 276.4, z: -5.93}
 --- !u!4 &4807373215069388
 Transform:
   m_ObjectHideFlags: 1
@@ -2373,6 +2373,7 @@ MonoBehaviour:
     BaseRotOffset: {x: 0, y: 0, z: 0, w: 0}
   Bound: 1
   BoundPos: {x: 0, y: 0, z: 0}
+  isEnabled: 1
 --- !u!137 &137024202399751526
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
