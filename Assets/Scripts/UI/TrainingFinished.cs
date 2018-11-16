@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class TrainingFinished : MonoBehaviour {
 
-    public NativeAvatar UserNativeAvatar;
-    public NativeAvatar TechniqueNativeAvatar;
+    public NativeAvatar UserNativeAvatar, TechniqueNativeAvatar;
+    public RiggedAvatar TechniqueRiggedAvatar, UserRiggedAvatar;
+
     public Playback UserPlayback, TechniquePlayback;
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FrameScoreBar;
@@ -16,14 +17,18 @@ public class TrainingFinished : MonoBehaviour {
     public Text FrameScoreText;
 
     private SkeletonComparer comparer;
+    private IAvatar UserAvatar, TechniqueAvatar;
 
     void Start() {
         comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+
+        UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
+        TechniqueAvatar = TechniqueRiggedAvatar as IAvatar ?? TechniqueNativeAvatar;
     }
 
     void FixedUpdate() {
-        ComparisonFrameData comparison = comparer.Compare(UserNativeAvatar.CurSkeleton, TechniqueNativeAvatar.CurSkeleton);
-        UserNativeAvatar.SetColor(comparison);
+        ComparisonFrameData comparison = comparer.Compare(UserNativeAvatar.CurSkeleton, TechniqueAvatar.CurSkeleton);
+        UserAvatar.SetColor(comparison);
 
         //foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
         //    JointType type = result.Key;
@@ -55,8 +60,8 @@ public class TrainingFinished : MonoBehaviour {
     public void SetupTrainingFinished(IEnumerable<Skeleton> recordedFrames) {
         VariableHolder.RecordedSkeletonFrames = recordedFrames.Select(s => (SerializableSkeleton) s).ToArray();
         UserPlayback.RefreshSkeletonFrames();
-        UserNativeAvatar.SwapSkeletonProvider(UserPlayback);
-        TechniqueNativeAvatar.SwapSkeletonProvider(TechniquePlayback);
+        UserAvatar.SwapSkeletonProvider(UserPlayback);
+        TechniqueAvatar.SwapSkeletonProvider(TechniquePlayback);
 
         int minEndFrame = Mathf.Min(TechniquePlayback.EndFrame, UserPlayback.EndFrame);
         UserPlayback.SetStartEndFrames(0, minEndFrame);
