@@ -40,11 +40,24 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     }
 
     public void SetColor(JointType jointType, Color color) {
-        throw new NotImplementedException();
+        RiggedModelJoint joint = FindJoint(jointType);
+        joint.Colorize(color);
     }
 
     public void SetColor(ComparisonFrameData comparison) {
-        throw new NotImplementedException();
+        foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
+            JointType type = result.Key;
+            float score = result.Value;
+
+            Color color;
+            if (score < 0.5f) {
+                color = Color.Lerp(Color.red, Color.yellow, score * 2);
+            } else {
+                color = Color.Lerp(Color.yellow, new Color(0, 1, 0, 0), (score - 0.5f) * 2);
+            }
+
+            SetColor(type, color);
+        }
     }
 
     public void SetEnabled(bool isEnabled) {
