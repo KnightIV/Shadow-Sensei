@@ -23,6 +23,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
         foreach (RiggedModelJoint modelJoint in ModelJoints) {
             modelJoint.BaseRotOffset = modelJoint.Bone.rotation;
+            modelJoint.SkeletonProvider = this;
         }
 
         SetEnabled(isEnabled);
@@ -31,7 +32,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     void FixedUpdate() {
         if (SkeletonProvider?.CurSkeleton != null) {
             PositionSkeleton(SkeletonProvider.CurSkeleton);
-            RotateBones(SkeletonProvider.CurSkeleton);
+            //RotateBones(SkeletonProvider.CurSkeleton);
         }
     }
 
@@ -60,6 +61,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
         }
     }
 
+    // ReSharper disable once ParameterHidesMember
     public void SetEnabled(bool isEnabled) {
         this.isEnabled = isEnabled;
 
@@ -80,9 +82,11 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     private void RotateBones(Skeleton s) {
         foreach (RiggedModelJoint riggedModelJoint in ModelJoints) {
-            Joint joint = s.GetJoint(riggedModelJoint.JointType);
-            Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
-            riggedModelJoint.Bone.rotation = jointOrientation;
+            //Joint joint = s.GetJoint(riggedModelJoint.JointType);
+            //Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
+            //riggedModelJoint.Bone.rotation = jointOrientation;
+
+            riggedModelJoint.UpdateAngle(s);
         }
     }
 
