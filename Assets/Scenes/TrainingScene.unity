@@ -950,6 +950,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4148253182275876, guid: b8319257327a59342b743199f894e7ec, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.00114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148253182275876, guid: b8319257327a59342b743199f894e7ec, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.00041
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148253182275876, guid: b8319257327a59342b743199f894e7ec, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.00862
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379227601579138, guid: b8319257327a59342b743199f894e7ec,
+        type: 2}
+      propertyPath: isStudent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379227601579138, guid: b8319257327a59342b743199f894e7ec,
+        type: 2}
+      propertyPath: cylinderPrefab
+      value: 
+      objectReference: {fileID: 1083608490743820, guid: 35db94bd2291e584785e37085e3418ee,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8319257327a59342b743199f894e7ec, type: 2}
   m_IsPrefabAsset: 0
