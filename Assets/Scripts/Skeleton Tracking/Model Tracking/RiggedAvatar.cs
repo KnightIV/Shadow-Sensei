@@ -32,7 +32,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     void FixedUpdate() {
         if (SkeletonProvider?.CurSkeleton != null) {
             PositionSkeleton(SkeletonProvider.CurSkeleton);
-            //RotateBones(SkeletonProvider.CurSkeleton);
+            RotateBones(SkeletonProvider.CurSkeleton);
         }
     }
 

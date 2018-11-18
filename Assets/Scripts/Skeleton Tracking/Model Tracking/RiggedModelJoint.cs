@@ -17,7 +17,7 @@ public class RiggedModelJoint {
 
     void FixedUpdate() {
         if (SkeletonProvider?.CurSkeleton != null) {
-            UpdateAngle(SkeletonProvider.CurSkeleton);
+            //UpdateAngle(SkeletonProvider.CurSkeleton);
         }
     }
 
