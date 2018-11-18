@@ -27,8 +27,8 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
             modelJoint.SkeletonProvider = this;
 
             if (isStudent) {
-                GameObject cylinder = GameObject.Find(modelJoint.Name) ?? Instantiate(cylinderPrefab);
-                cylinder.name = modelJoint.Name;
+                GameObject cylinder = GameObject.Find(modelJoint.Name + " - cyl") ?? Instantiate(cylinderPrefab);
+                cylinder.name = modelJoint.Name + " - cyl";
                 modelJoint.InitStudent(cylinder);
             }
         }
@@ -49,7 +49,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     public void SetColor(JointType jointType, Color color) {
         RiggedModelJoint joint = FindJoint(jointType);
-        joint.Colorize(color);
+        joint?.Colorize(color);
     }
 
     public void SetColor(ComparisonFrameData comparison) {
@@ -98,6 +98,6 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     }
 
     private RiggedModelJoint FindJoint(JointType type) {
-        return ModelJoints.First(m => m.JointType == type);
+        return ModelJoints.FirstOrDefault(m => m.JointType == type);
     }
 }
