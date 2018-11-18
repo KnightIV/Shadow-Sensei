@@ -16,7 +16,8 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     public ISkeletonProvider SkeletonProvider { get; protected set; }
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
-    [SerializeField] private bool isEnabled;
+    [SerializeField] private bool isEnabled, isStudent;
+    [SerializeField] private GameObject cylinderPrefab;
 
     void Start() {
         SkeletonProvider = CurrentUserTracker.Instance;
@@ -24,6 +25,12 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
         foreach (RiggedModelJoint modelJoint in ModelJoints) {
             modelJoint.BaseRotOffset = modelJoint.Bone.rotation;
             modelJoint.SkeletonProvider = this;
+
+            if (isStudent) {
+                GameObject cylinder = GameObject.Find(modelJoint.Name) ?? Instantiate(cylinderPrefab);
+                cylinder.name = modelJoint.Name;
+                modelJoint.InitStudent(cylinder);
+            }
         }
 
         SetEnabled(isEnabled);
