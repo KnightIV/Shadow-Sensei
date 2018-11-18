@@ -15,31 +15,22 @@ public class RiggedModelJoint {
     public JointType JointType;
 
     [HideInInspector] public Quaternion BaseRotOffset;
-
+    
     [SerializeField] private GameObject cylinder;
 
-    private Renderer boneRenderer;
-
-    void Start() {
-        boneRenderer = Bone.GetComponent<Renderer>();
-
-        if (boneRenderer == null) {
-            Debug.Log($"No renderer found for {Name}");
-        }
-    }
-
-    void FixedUpdate() {
-        if (SkeletonProvider?.CurSkeleton != null) {
-            //UpdateAngle(SkeletonProvider.CurSkeleton);
-        }
-    }
+    private MeshRenderer cylinderRenderer;
 
     public void Colorize(Color c) {
-
+        cylinderRenderer.material.color = c;
     }
 
+    // ReSharper disable once ParameterHidesMember
     public void InitStudent(GameObject cylinder) {
         this.cylinder = cylinder;
+        cylinderRenderer = this.cylinder.GetComponent<MeshRenderer>();
+        if (cylinder != null) {
+            ArrangeCylinder();
+        }
     }
 
     public void UpdateAngle(Skeleton s) {
@@ -48,9 +39,20 @@ public class RiggedModelJoint {
         Bone.rotation = jointOrientation;
 
         if (cylinder != null) {
-            cylinder.transform.localScale = boneRenderer.bounds.size;
-            cylinder.transform.position = Bone.position;
-            cylinder.transform.rotation = jointOrientation;
+            //cylinder.transform.localScale = boneRenderer.bounds.size;
+
+            //cylinder.transform.localScale = Bone.localScale;
+            //cylinder.transform.position = Bone.position;
+            //cylinder.transform.rotation = jointOrientation;
+
+            ArrangeCylinder();
         }
+    }
+
+    private void ArrangeCylinder() {
+        cylinder.transform.localScale = 0.002f * Bone.lossyScale;
+        //cylinder.transform.localScale = boneRenderer.bounds.size;
+        cylinder.transform.position = Bone.position;
+        cylinder.transform.rotation = Bone.rotation;
     }
 }
