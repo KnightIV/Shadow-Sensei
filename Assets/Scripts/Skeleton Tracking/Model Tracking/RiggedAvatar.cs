@@ -17,7 +17,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
     [SerializeField] private bool isEnabled, isStudent;
-    [SerializeField] private GameObject cylinderPrefab;
+    [SerializeField] private GameObject scorerPrefab;
 
     void Start() {
         SkeletonProvider = CurrentUserTracker.Instance;
@@ -27,8 +27,8 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
             modelJoint.SkeletonProvider = this;
 
             if (isStudent) {
-                GameObject cylinder = GameObject.Find(modelJoint.Name + " - cyl") ?? Instantiate(cylinderPrefab);
-                cylinder.name = modelJoint.Name + " - cyl";
+                GameObject cylinder = GameObject.Find(modelJoint.Name + " - score") ?? Instantiate(scorerPrefab);
+                cylinder.name = modelJoint.Name + " - score";
                 modelJoint.InitStudent(cylinder);
             }
         }
@@ -59,9 +59,9 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
             Color color;
             if (score < 0.5f) {
-                color = Color.Lerp(Color.red, Color.yellow, score * 2);
+                color = Color.Lerp(Color.red, new Color(0.5f, 0, 0), score * 2);
             } else {
-                color = Color.Lerp(Color.yellow, new Color(0, 1, 0, 0), (score - 0.5f) * 2);
+                color = Color.Lerp(new Color(0.5f, 0, 0), Color.clear, (score - 0.5f) * 2);
             }
 
             SetColor(type, color);
