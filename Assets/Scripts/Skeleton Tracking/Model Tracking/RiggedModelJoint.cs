@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using nuitrack;
 using UnityEngine;
 using Joint = nuitrack.Joint;
+using Vector3 = UnityEngine.Vector3;
 
 [Serializable]
 public class RiggedModelJoint {
@@ -16,21 +17,20 @@ public class RiggedModelJoint {
 
     [HideInInspector] public Quaternion BaseRotOffset;
     
-    [SerializeField] private GameObject cylinder;
+    [SerializeField] private GameObject scoreGameObject;
 
-    private MeshRenderer cylinderRenderer;
+    private Renderer scorerRenderer;
 
     public void Colorize(Color c) {
-        cylinderRenderer.material.color = c;
+        scorerRenderer.material.color = c;
     }
 
     // ReSharper disable once ParameterHidesMember
-    public void InitStudent(GameObject cylinder) {
-        this.cylinder = cylinder;
-        cylinderRenderer = this.cylinder.GetComponent<MeshRenderer>();
-        if (cylinder != null) {
-            ArrangeCylinder();
-        }
+    public void InitStudent(GameObject scoreGameObject) {
+        this.scoreGameObject = scoreGameObject;
+        scorerRenderer = this.scoreGameObject.GetComponent<Renderer>();
+        this.scoreGameObject.transform.parent = Bone;
+        this.scoreGameObject.transform.localPosition = Vector3.zero;
     }
 
     public void UpdateAngle(Skeleton s) {
@@ -38,21 +38,21 @@ public class RiggedModelJoint {
         Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * BaseRotOffset;
         Bone.rotation = jointOrientation;
 
-        if (cylinder != null) {
-            //cylinder.transform.localScale = boneRenderer.bounds.size;
+        //if (scoreGameObject != null) {
+        //    //scoreGameObject.transform.localScale = boneRenderer.bounds.size;
 
-            //cylinder.transform.localScale = Bone.localScale;
-            //cylinder.transform.position = Bone.position;
-            //cylinder.transform.rotation = jointOrientation;
+        //    //scoreGameObject.transform.localScale = Bone.localScale;
+        //    //scoreGameObject.transform.position = Bone.position;
+        //    //scoreGameObject.transform.rotation = jointOrientation;
 
-            ArrangeCylinder();
-        }
+        //    ArrangeCylinder();
+        //}
     }
 
     private void ArrangeCylinder() {
-        cylinder.transform.localScale = 0.002f * Bone.lossyScale;
-        //cylinder.transform.localScale = boneRenderer.bounds.size;
-        cylinder.transform.position = Bone.position;
-        cylinder.transform.rotation = Bone.rotation;
+        //scoreGameObject.transform.localScale = 0.002f * Bone.lossyScale;
+        //scoreGameObject.transform.localScale = boneRenderer.bounds.size;
+        scoreGameObject.transform.position = Bone.position;
+        scoreGameObject.transform.rotation = Bone.rotation;
     }
 }
