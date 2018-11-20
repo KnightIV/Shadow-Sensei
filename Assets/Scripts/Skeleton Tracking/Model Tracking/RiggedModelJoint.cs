@@ -31,6 +31,12 @@ public class RiggedModelJoint {
         scorerRenderer = this.scoreGameObject.GetComponent<Renderer>();
         this.scoreGameObject.transform.parent = Bone;
         this.scoreGameObject.transform.localPosition = Vector3.zero;
+
+        SetTraining(false);
+    }
+
+    public void SetTraining(bool isTraining) {
+        scorerRenderer.enabled = isTraining;
     }
 
     public void UpdateAngle(Skeleton s) {
@@ -47,12 +53,5 @@ public class RiggedModelJoint {
 
         //    ArrangeCylinder();
         //}
-    }
-
-    private void ArrangeCylinder() {
-        //scoreGameObject.transform.localScale = 0.002f * Bone.lossyScale;
-        //scoreGameObject.transform.localScale = boneRenderer.bounds.size;
-        scoreGameObject.transform.position = Bone.position;
-        scoreGameObject.transform.rotation = Bone.rotation;
     }
 }
