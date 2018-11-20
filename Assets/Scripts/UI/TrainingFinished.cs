@@ -30,20 +30,6 @@ public class TrainingFinished : MonoBehaviour {
         ComparisonFrameData comparison = comparer.Compare(UserAvatar.CurSkeleton, TechniqueAvatar.CurSkeleton);
         UserAvatar.SetColor(comparison);
 
-        //foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
-        //    JointType type = result.Key;
-        //       float score = 
-        //}
-
-        //JointTracker[] userTrackers = UserNativeAvatar.JointTrackers;
-
-        //foreach (JointTracker tracker in userTrackers) {
-        //    float jointScore = comparison[tracker.JointType];
-
-        //    tracker.Color.g = jointScore;
-        //    tracker.Color.b = jointScore;
-        //}
-
         float totalScore = comparison.TotalScore;
         FrameScoreBar.UpdateScore(totalScore);
     }
