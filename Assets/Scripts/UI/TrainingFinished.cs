@@ -19,15 +19,15 @@ public class TrainingFinished : MonoBehaviour {
     private SkeletonComparer comparer;
     private IAvatar UserAvatar, TechniqueAvatar;
 
-    void Start() {
-        comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+    void Awake() {
+        comparer = SkeletonComparer.GetComparer(CurveProvider.Curve);
 
         UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
         TechniqueAvatar = TechniqueRiggedAvatar as IAvatar ?? TechniqueNativeAvatar;
     }
 
     void FixedUpdate() {
-        ComparisonFrameData comparison = comparer.Compare(UserNativeAvatar.CurSkeleton, TechniqueAvatar.CurSkeleton);
+        ComparisonFrameData comparison = comparer.Compare(UserAvatar.CurSkeleton, TechniqueAvatar.CurSkeleton);
         UserAvatar.SetColor(comparison);
 
         //foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
@@ -46,15 +46,6 @@ public class TrainingFinished : MonoBehaviour {
 
         float totalScore = comparison.TotalScore;
         FrameScoreBar.UpdateScore(totalScore);
-        //Color textColor;
-        //if (totalScore > 0.5f) {
-        //    textColor = Color.Lerp(Color.yellow, Color.green, (totalScore - 0.5f) * 2);
-        //} else {
-        //    textColor = Color.Lerp(Color.red, Color.yellow, totalScore * 2);
-        //}
-
-        //FrameScoreText.text = $"{comparison.TotalScorePercent:F2}%";
-        //FrameScoreText.color = textColor;
     }
 
     public void SetupTrainingFinished(IEnumerable<Skeleton> recordedFrames) {
@@ -66,5 +57,8 @@ public class TrainingFinished : MonoBehaviour {
         int minEndFrame = Mathf.Min(TechniquePlayback.EndFrame, UserPlayback.EndFrame);
         UserPlayback.SetStartEndFrames(0, minEndFrame);
         TechniquePlayback.SetStartEndFrames(0, minEndFrame);
+
+        UserPlayback.Reset();
+        TechniquePlayback.Reset();
     }
 }
