@@ -16,8 +16,6 @@ public class TrainingActions : MonoBehaviour {
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FinalScoreBar;
 
-    public Text FinishedText;
-
     private Technique technique;
     private SkeletonComparer comparer;
     private IAvatar PlaybackAvatar, UserAvatar;
@@ -29,7 +27,7 @@ public class TrainingActions : MonoBehaviour {
 
     public void Init(Technique t) {
         technique = t;
-        comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+        comparer = SkeletonComparer.GetComparer(CurveProvider.Curve);
 
         VariableHolder.RecordedSkeletonFrames = t.TechniqueFrames;
         Playback.RefreshSkeletonFrames();
@@ -52,19 +50,6 @@ public class TrainingActions : MonoBehaviour {
 
         TechniqueFileHelper.RegisterAttempt(technique, totalScore);
         FinalScoreBar.UpdateScore(totalScore);
-
-        //FinishedText.text = $"Total Score: {data.TotalScorePercent:F2}%";
-
-        //Debug.Log(FinishedText.text);
-
-        //Color textColor;
-        //if (totalScore > 0.5f) {
-        //    textColor = Color.Lerp(Color.yellow, Color.green, (totalScore - 0.5f) * 2);
-        //} else {
-        //    textColor = Color.Lerp(Color.red, Color.yellow, totalScore * 2);
-        //}
-
-        //FinishedText.color = textColor;
     }
 }
 
