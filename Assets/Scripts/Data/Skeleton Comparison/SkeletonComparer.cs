@@ -14,6 +14,10 @@ public abstract class SkeletonComparer {
     protected AnimationCurve curve;
     protected object mutex = new object();
 
+    public static SkeletonComparer GetComparer(AnimationCurve curve) {
+        return new AngleSkeletonComparer(curve);
+    }
+
     protected SkeletonComparer(AnimationCurve curve) {
         this.curve = curve;
     }
