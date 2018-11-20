@@ -18,8 +18,7 @@ public class RiggedModelJoint {
     [HideInInspector] public Quaternion BaseRotOffset;
     
     [SerializeField] private GameObject scoreGameObject;
-
-    private Renderer scorerRenderer;
+    [SerializeField] private MeshRenderer scorerRenderer;
 
     public void Colorize(Color c) {
         scorerRenderer.material.color = c;
@@ -28,7 +27,7 @@ public class RiggedModelJoint {
     // ReSharper disable once ParameterHidesMember
     public void InitStudent(GameObject scoreGameObject) {
         this.scoreGameObject = scoreGameObject;
-        scorerRenderer = this.scoreGameObject.GetComponent<Renderer>();
+        scorerRenderer = this.scoreGameObject.GetComponent<MeshRenderer>();
         this.scoreGameObject.transform.parent = Bone;
         this.scoreGameObject.transform.localPosition = Vector3.zero;
 
@@ -36,7 +35,10 @@ public class RiggedModelJoint {
     }
 
     public void SetTraining(bool isTraining) {
-        scorerRenderer.enabled = isTraining;
+        //scoreGameObject.SetActive(isTraining);
+        //scorerRenderer.enabled = isTraining;
+        Color c = isTraining ? scorerRenderer.material.color : Color.clear;
+        Colorize(c);
     }
 
     public void UpdateAngle(Skeleton s) {
