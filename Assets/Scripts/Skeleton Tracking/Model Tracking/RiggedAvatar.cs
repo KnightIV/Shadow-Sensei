@@ -9,6 +9,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class RiggedAvatar : MonoBehaviour, IAvatar {
 
+    public static readonly Color MIDPOINT = new Color(0.5f, 0, 0);
+    public static readonly Color CORRECT = Color.clear;
+
     [Header("Rigged Model")] public RiggedModelJoint[] ModelJoints;
     public bool Bound;
     public Vector3 BoundPos;
@@ -59,9 +62,9 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
             Color color;
             if (score < 0.5f) {
-                color = Color.Lerp(Color.red, new Color(0.5f, 0, 0), score * 2);
+                color = Color.Lerp(Color.red, MIDPOINT, score * 2);
             } else {
-                color = Color.Lerp(new Color(0.5f, 0, 0), Color.clear, (score - 0.5f) * 2);
+                color = Color.Lerp(MIDPOINT, CORRECT, (score - 0.5f) * 2);
             }
 
             SetColor(type, color);
@@ -77,6 +80,14 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
         }
     }
 
+    public void SetTraining(bool isTraining) {
+        if (isStudent) {
+            foreach (RiggedModelJoint joint in ModelJoints) {
+                joint.SetTraining(isTraining);
+            }
+        }
+    }
+
     private void PositionSkeleton(Skeleton s) {
         Vector3 torsoPos;
         if (Bound) {
@@ -89,10 +100,6 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     private void RotateBones(Skeleton s) {
         foreach (RiggedModelJoint riggedModelJoint in ModelJoints) {
-            //Joint joint = s.GetJoint(riggedModelJoint.JointType);
-            //Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * riggedModelJoint.BaseRotOffset;
-            //riggedModelJoint.Bone.rotation = jointOrientation;
-
             riggedModelJoint.UpdateAngle(s);
         }
     }
