@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using nuitrack;
 using UnityEngine;
-using Joint = nuitrack.Joint;
+
 using Vector3 = UnityEngine.Vector3;
 
 public class RiggedAvatar : MonoBehaviour, IAvatar {
 
-    public static readonly Color MIDPOINT = new Color(0.5f, 0, 0);
+    public static readonly Color INCORRECT = new Color(1, 0, 0, 0.7f);
+    public static readonly Color MIDPOINT = new Color(0.5f, 0, 0, 0.5f);
     public static readonly Color CORRECT = Color.clear;
 
     [Header("Rigged Model")] public RiggedModelJoint[] ModelJoints;
@@ -62,7 +63,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
             Color color;
             if (score < 0.5f) {
-                color = Color.Lerp(Color.red, MIDPOINT, score * 2);
+                color = Color.Lerp(INCORRECT, MIDPOINT, score * 2);
             } else {
                 color = Color.Lerp(MIDPOINT, CORRECT, (score - 0.5f) * 2);
             }
