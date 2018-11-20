@@ -33,7 +33,7 @@ public class LoadListSetup : MonoBehaviour {
 
             foreach (TextMeshProUGUI text in texts) {
                 if (text.name == "TechniqueDataText") {
-                    text.text = $"TrainingPreview: {meta.TechniqueName}\n" +
+                    text.text = $"Name: {meta.TechniqueName}\n" +
                                 $"Recorded by: {meta.UserName}";
                 } else if (text.name == "UserStatsText") {
                     string date = meta.LastAttemptedDateTime == default(DateTime) ? "N/A" : meta.LastAttemptedDateTime.ToShortDateString();
