@@ -486,6 +486,26 @@ Prefab:
       propertyPath: m_Name
       value: SenseiRecording
       objectReference: {fileID: 0}
+    - target: {fileID: 114749357980645518, guid: f9c3e642700596546bda9735653d594a,
+        type: 2}
+      propertyPath: isEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749357980645518, guid: f9c3e642700596546bda9735653d594a,
+        type: 2}
+      propertyPath: BoundPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749357980645518, guid: f9c3e642700596546bda9735653d594a,
+        type: 2}
+      propertyPath: BoundPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749357980645518, guid: f9c3e642700596546bda9735653d594a,
+        type: 2}
+      propertyPath: BoundPos.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9c3e642700596546bda9735653d594a, type: 2}
   m_IsPrefabAsset: 0
