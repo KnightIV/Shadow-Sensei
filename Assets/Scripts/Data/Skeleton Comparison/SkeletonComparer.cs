@@ -48,4 +48,5 @@ public abstract class SkeletonComparer {
     }
 
     public abstract ComparisonFrameData Compare(Skeleton s1, Skeleton s2);
+    
 }
