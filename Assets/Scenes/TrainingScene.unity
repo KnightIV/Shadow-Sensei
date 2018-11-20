@@ -128,7 +128,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4877295207854714, guid: bd1f5128cbad26246b8140b9ff901bc5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.9
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 4877295207854714, guid: bd1f5128cbad26246b8140b9ff901bc5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -289,7 +289,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1418091740}
         m_MethodName: OnStateChanged
         m_Mode: 3
@@ -303,6 +303,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 69772309}
         m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1046416050}
+        m_MethodName: StopRecording
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1197,7 +1208,7 @@ Prefab:
     - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224924589439015798, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
@@ -1297,12 +1308,12 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 873813601}
+      objectReference: {fileID: 2096808134}
     - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 2096808134}
+      objectReference: {fileID: 1046416051}
     - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
@@ -1317,18 +1328,74 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 11396394}
+      objectReference: {fileID: 1046416051}
     - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: Toggle
+      value: TogglePlay
       objectReference: {fileID: 0}
     - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1046416051}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: TogglePlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11396394}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658746189211564, guid: a255b89e0d3c10f40bfc6baf2de7d1bb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TogglePlay
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114628930594583356, guid: a255b89e0d3c10f40bfc6baf2de7d1bb, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: a255b89e0d3c10f40bfc6baf2de7d1bb, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &513260636
@@ -2770,7 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AssociatedPlaybacks:
   - {fileID: 2096808134}
-  - {fileID: 873813601}
+  - {fileID: 1046416051}
 --- !u!114 &893752190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,6 +3059,117 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 999928571}
   m_Script: {fileID: 11500000, guid: a27ead2bc9e34d742b865f0063c530c0, type: 3}
+--- !u!1 &1046416048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1208648140222744, guid: b8319257327a59342b743199f894e7ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 405857762}
+--- !u!114 &1046416050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046416048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223caea5724d6284dbf159e750c4a2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Recording: 0
+  OnStopRecording:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1567914323}
+        m_MethodName: FinishTraining
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1567914326}
+        m_MethodName: SetupTrainingFinished
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1567914326}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: RecordFinishEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  SkeletonFrames: []
+--- !u!114 &1046416051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046416048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623772469ad2513409cd853cc6834e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackSlider: {fileID: 893752190}
+  IsPlaying: 0
+  IsSliderMoving: 0
+  StartFrame: 0
+  CurFrame: 0
+  EndFrame: 0
+  TrimSlider: {fileID: 0}
+  OnFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1084597210}
+        m_MethodName: ToggleText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 11396394}
+        m_MethodName: SetToggled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlaybackStepEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnUpdateFrame:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlaybackFrameStepEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1084597205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,7 +4600,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 873813599}
         m_MethodName: SetEnabled
         m_Mode: 6
@@ -4433,8 +4611,41 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 873813600}
+        m_MethodName: ClearRecording
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 69772310}
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 405857764}
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1046416050}
         m_MethodName: ClearRecording
         m_Mode: 1
         m_Arguments:
@@ -4642,7 +4853,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1567914325}
         m_MethodName: SetEnabled
         m_Mode: 6
@@ -4664,9 +4875,9 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 59462625}
-        m_MethodName: SetActive
+        m_CallState: 0
+      - m_Target: {fileID: 69772309}
+        m_MethodName: SetPlaying
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4674,7 +4885,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1046416050}
+        m_MethodName: StartRecording
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: CountdownFinishedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -4694,7 +4916,7 @@ MonoBehaviour:
   UserRiggedAvatar: {fileID: 405857764}
   TechniqueRiggedAvatar: {fileID: 69772310}
   CountdownTimer: {fileID: 1567914324}
-  UserPlayback: {fileID: 2080357589}
+  TechniquePlayback: {fileID: 69772309}
   CurveProvider: {fileID: 114619705913701818, guid: ce4b9a3a5b604e24090ba00a64a1cb41,
     type: 2}
   ScoreBar: {fileID: 971272137}
@@ -4714,7 +4936,7 @@ MonoBehaviour:
   TechniqueNativeAvatar: {fileID: 2080357588}
   TechniqueRiggedAvatar: {fileID: 69772310}
   UserRiggedAvatar: {fileID: 405857764}
-  UserPlayback: {fileID: 873813601}
+  UserPlayback: {fileID: 1046416051}
   TechniquePlayback: {fileID: 2096808134}
   CurveProvider: {fileID: 114619705913701818, guid: ce4b9a3a5b604e24090ba00a64a1cb41,
     type: 2}
@@ -5030,6 +5252,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 405857764}
+        m_MethodName: SetTraining
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -6094,7 +6327,18 @@ MonoBehaviour:
   TrimSlider: {fileID: 0}
   OnFinish:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11396394}
+        m_MethodName: SetToggled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnUpdate:
