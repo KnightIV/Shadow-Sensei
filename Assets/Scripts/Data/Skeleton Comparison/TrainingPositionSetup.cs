@@ -12,7 +12,7 @@ public class TrainingPositionSetup : MonoBehaviour {
 
     public SkeletonComparer Comparer;
     public CountdownTimer CountdownTimer;
-    public Playback UserPlayback;
+    public Playback TechniquePlayback;
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider ScoreBar;
 
@@ -26,7 +26,7 @@ public class TrainingPositionSetup : MonoBehaviour {
     #endregion
 
     void Start() {
-        Comparer = new AngleSkeletonComparer(CurveProvider.Curve);
+        Comparer = SkeletonComparer.GetComparer(CurveProvider.Curve);
         UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
         TechniqueAvatar = TechniqueRiggedAvatar as IAvatar ?? TechniqueNativeAvatar;
     }
@@ -78,8 +78,8 @@ public class TrainingPositionSetup : MonoBehaviour {
         isEnabled = enable;
 
         if (isEnabled) {
-            UserPlayback.RefreshSkeletonFrames();
-            TechniqueNativeAvatar.SwapSkeletonProvider(UserPlayback);
+            TechniquePlayback.RefreshSkeletonFrames();
+            TechniqueAvatar.SwapSkeletonProvider(TechniquePlayback);
         }
     }
 }
