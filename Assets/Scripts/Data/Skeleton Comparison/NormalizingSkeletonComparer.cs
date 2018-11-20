@@ -9,7 +9,7 @@ using Vector3 = UnityEngine.Vector3;
 [Serializable]
 public class NormalizingSkeletonComparer : SkeletonComparer {
 
-    public NormalizingSkeletonComparer(AnimationCurve curve) : base(curve) { }
+    internal NormalizingSkeletonComparer(AnimationCurve curve) : base(curve) { }
 
     public override ComparisonFrameData Compare(Skeleton s1, Skeleton s2) {
         ComparisonFrameData comparisonData = new ComparisonFrameData();

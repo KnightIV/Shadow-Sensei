@@ -28,7 +28,7 @@ public class AngleSkeletonComparer : SkeletonComparer {
         return acos;
     }
 
-    public AngleSkeletonComparer(AnimationCurve curve) : base(curve) {}
+    internal AngleSkeletonComparer(AnimationCurve curve) : base(curve) {}
 
     public override ComparisonFrameData Compare(Skeleton s1, Skeleton s2) {
         Dictionary<JointType, ScoreTracker> preliminaryScoreTrackers = new Dictionary<JointType, ScoreTracker>();
