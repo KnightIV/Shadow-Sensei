@@ -12,7 +12,7 @@ public class TrainingActions : MonoBehaviour {
     public NativeAvatar PlaybackNativeAvatar, UserNativeAvatar;
     public RiggedAvatar PlaybackRiggedAvatar, UserRiggedAvatar;
 
-    public Playback Playback, FinishedPlayback;
+    public Playback PreviewPlayback, FinishedPlayback;
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FinalScoreBar;
 
@@ -20,7 +20,7 @@ public class TrainingActions : MonoBehaviour {
     private SkeletonComparer comparer;
     private IAvatar PlaybackAvatar, UserAvatar;
 
-    void Start() {
+    void Awake() {
         PlaybackAvatar = PlaybackRiggedAvatar as IAvatar ?? PlaybackNativeAvatar;
         UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
     }
@@ -30,10 +30,10 @@ public class TrainingActions : MonoBehaviour {
         comparer = SkeletonComparer.GetComparer(CurveProvider.Curve);
 
         VariableHolder.RecordedSkeletonFrames = t.TechniqueFrames;
-        Playback.RefreshSkeletonFrames();
+        PreviewPlayback.RefreshSkeletonFrames();
         FinishedPlayback.RefreshSkeletonFrames();
 
-        PlaybackAvatar.SwapSkeletonProvider(Playback);
+        PlaybackAvatar.SwapSkeletonProvider(PreviewPlayback);
         UserAvatar.SwapSkeletonProvider(CurrentUserTracker.Instance);
 
         PlaybackAvatar.SetEnabled(true);
