@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class TrainingPositionSetup : MonoBehaviour {
 
-    public NativeAvatar UserNativeAvatar;
-    public NativeAvatar TechniqueNativeAvatar;
+    public NativeAvatar UserNativeAvatar, TechniqueNativeAvatar;
     public RiggedAvatar UserRiggedAvatar, TechniqueRiggedAvatar;
 
     public SkeletonComparer Comparer;
@@ -25,7 +24,7 @@ public class TrainingPositionSetup : MonoBehaviour {
 
     #endregion
 
-    void Start() {
+    void Awake() {
         Comparer = SkeletonComparer.GetComparer(CurveProvider.Curve);
         UserAvatar = UserRiggedAvatar as IAvatar ?? UserNativeAvatar;
         TechniqueAvatar = TechniqueRiggedAvatar as IAvatar ?? TechniqueNativeAvatar;
@@ -41,24 +40,6 @@ public class TrainingPositionSetup : MonoBehaviour {
                 ComparisonFrameData result = Comparer.Compare(userSkeleton, techniqueSkeleton);
 
                 UserAvatar.SetColor(result);
-
-                //foreach (KeyValuePair<JointType, float> resultScore in result.JointScores) {
-                //    JointType type = resultScore.Key;
-                //    float score = resultScore.Value;
-
-                //    UserAvatar.SetColor(type, new Color(1, score, score));
-                //}
-
-                //for (int i = 0; i < UserAvatar.JointTrackers.Length; i++) {
-                //    JointTracker tracker = UserAvatar.JointTrackers[i];
-                //    tracker.Color.g = result[tracker.JointType];
-                //    tracker.Color.b = result[tracker.JointType];
-
-                //    if (result[tracker.JointType] < 0) {
-                //        Debug.Log(result[tracker.JointType]);
-                //    }
-                //}
-
                 totalScore = result.TotalScore;
 
                 if (1 - totalScore < 0.1f) {
