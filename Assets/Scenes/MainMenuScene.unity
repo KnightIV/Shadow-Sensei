@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 110622378}
   - component: {fileID: 110622377}
   - component: {fileID: 110622376}
+  - component: {fileID: 110622379}
   m_Layer: 5
   m_Name: TrainButton
   m_TagString: Untagged
@@ -169,9 +170,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+    m_HighlightedColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    m_PressedColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -221,8 +222,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8efdd152c6608874483be06210bedcd8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -236,6 +237,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110622374}
   m_CullTransparentMesh: 0
+--- !u!114 &110622379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 110622374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e226fc5502cabd45a92bc38e6edb4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  HighlightedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+  ClickedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
 --- !u!1 &249793155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1115,7 @@ GameObject:
   - component: {fileID: 656184196}
   - component: {fileID: 656184195}
   - component: {fileID: 656184194}
+  - component: {fileID: 656184197}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1145,9 +1161,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+    m_HighlightedColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    m_PressedColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1197,8 +1213,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8efdd152c6608874483be06210bedcd8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1212,6 +1228,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 656184192}
   m_CullTransparentMesh: 0
+--- !u!114 &656184197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 656184192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e226fc5502cabd45a92bc38e6edb4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  HighlightedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+  ClickedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
 --- !u!1 &720961612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5915,6 +5945,7 @@ GameObject:
   - component: {fileID: 1108214015}
   - component: {fileID: 1108214014}
   - component: {fileID: 1108214013}
+  - component: {fileID: 1108214016}
   m_Layer: 5
   m_Name: RecordButton
   m_TagString: Untagged
@@ -5960,9 +5991,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+    m_HighlightedColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    m_PressedColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6012,8 +6043,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8efdd152c6608874483be06210bedcd8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6027,6 +6058,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1108214011}
   m_CullTransparentMesh: 0
+--- !u!114 &1108214016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1108214011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e226fc5502cabd45a92bc38e6edb4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  HighlightedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+  ClickedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
 --- !u!1 &1108711959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,6 +6230,25 @@ MonoBehaviour:
     Layout: {fileID: 1679227338}
   - State: 2
     Layout: {fileID: 1103494148}
+--- !u!1 &1201408649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938391688779568, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1288930563}
+--- !u!114 &1201408654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201408649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e226fc5502cabd45a92bc38e6edb4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  HighlightedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+  ClickedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
 --- !u!1 &1212616467
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,35 +6428,147 @@ Prefab:
     - target: {fileID: 114744601941293592, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114744601941293592, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114435833885063838, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114435833885063838, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114727485883684176, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114727485883684176, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1503748488296758, guid: 7045ee2ec4d493a4f9b50d8da4b361b9, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.81124276
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5608757
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.81124276
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5608757
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840340568508372, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741973244283018, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114516673971994754, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8efdd152c6608874483be06210bedcd8,
+        type: 3}
+    - target: {fileID: 114516673971994754, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540799877498188, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8efdd152c6608874483be06210bedcd8,
+        type: 3}
+    - target: {fileID: 114540799877498188, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+        type: 2}
+      propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6546,6 +6722,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ff78c13a46f9142937d7c407a5fddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1747847891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1575099100032772, guid: 7045ee2ec4d493a4f9b50d8da4b361b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1288930563}
+--- !u!114 &1747847896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747847891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e226fc5502cabd45a92bc38e6edb4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  HighlightedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
+  ClickedColor: {r: 0.8679245, g: 0.81124276, b: 0.5608757, a: 1}
 --- !u!1 &1878132679
 GameObject:
   m_ObjectHideFlags: 0
