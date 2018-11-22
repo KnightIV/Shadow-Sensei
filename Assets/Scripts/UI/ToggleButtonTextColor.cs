@@ -10,15 +10,19 @@ using TextMeshProUGUI = TMPro.TextMeshProUGUI;
 public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointerExitHandler, IPointerEnterHandler, IPointerUpHandler {
 
     public Color Color {
-        set { buttonText.color = value; }
+        set {
+            foreach (TextMeshProUGUI text in buttonTexts) {
+                text.color = value;
+            }
+        }
     }
 
     public Color DefaultColor, HighlightedColor, ClickedColor;
 
-    private TextMeshProUGUI buttonText;
+    private TextMeshProUGUI[] buttonTexts;
     
 	void Start () {
-	    buttonText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+	    buttonTexts = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
 
 	    Color = DefaultColor;
 	}
