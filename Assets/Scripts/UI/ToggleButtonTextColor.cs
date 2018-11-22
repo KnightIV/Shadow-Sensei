@@ -7,7 +7,11 @@ using UnityEngine.UI;
 
 using TextMeshProUGUI = TMPro.TextMeshProUGUI;
 
-public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler {
+public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointerExitHandler, IPointerEnterHandler, IPointerUpHandler {
+
+    public Color Color {
+        set { buttonText.color = value; }
+    }
 
     public Color DefaultColor, HighlightedColor, ClickedColor;
 
@@ -15,17 +19,23 @@ public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointe
     
 	void Start () {
 	    buttonText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+
+	    Color = DefaultColor;
 	}
 
+    public void OnPointerEnter(PointerEventData eventData) {
+        Color = HighlightedColor;
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        Color = DefaultColor;
+    }
+
     public void OnPointerDown(PointerEventData eventData) {
-        buttonText.color = HighlightedColor;
+        Color = ClickedColor;
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        buttonText.color = DefaultColor;
-    }
-
-    public void OnPointerClick(PointerEventData eventData) {
-        buttonText.color = ClickedColor;
+        Color = DefaultColor;
     }
 }
