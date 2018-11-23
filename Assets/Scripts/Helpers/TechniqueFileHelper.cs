@@ -60,6 +60,16 @@ public static class TechniqueFileHelper {
         return t;
     }
 
+    public static Technique LoadClean(string name) {
+        Technique t = Load(name);
+
+        t.LastAttemptedDateTime = default(DateTime);
+        t.Score = 0;
+        t.UserAttemptFrames = null;
+
+        return t;
+    }
+
     public static IEnumerable<TechniqueMetaData> GetAllTechniquesMeta() {
         if (!Directory.Exists(MetaDataFolder)) {
             throw new InvalidOperationException("could not find meta directory");
