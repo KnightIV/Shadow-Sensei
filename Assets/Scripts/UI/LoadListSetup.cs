@@ -11,7 +11,6 @@ public class LoadListSetup : MonoBehaviour {
     public MenuControl MenuControl;
     public TrainingActions TrainingActions;
     public VerticalLayoutGroup TechniqueLayout;
-    public UnityAction ButtonAction;
 
     void Start() {
         SetupList();
@@ -46,12 +45,11 @@ public class LoadListSetup : MonoBehaviour {
                 }
             }
 
-            //button.onClick.AddListener(() => {
-            //    Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
-            //    TrainingActions.Init(loadedTechnique);
-            //    MenuControl.OnStateChanged(MenuStates.TrainingPreview);
-            //});
-            button.onClick.AddListener(ButtonAction);
+            button.onClick.AddListener(() => {
+                Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
+                TrainingActions.Init(loadedTechnique);
+                MenuControl.OnStateChanged(MenuStates.TrainingPreview);
+            });
         }
     }
 }
