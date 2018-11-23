@@ -8,4 +8,5 @@ public static class SceneNames {
     public const string RECORD_SCENE = "RecordingScene";
     public const string TRAINING_SCENE = "TrainingScene";
     public const string MAIN_MENU_SCENE = "MainMenuScene";
+    public const string TRANSFER_SCENE = "TransferScene";
 }
