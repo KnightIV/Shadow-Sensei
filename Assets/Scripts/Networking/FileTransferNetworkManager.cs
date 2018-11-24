@@ -10,6 +10,7 @@ public class FileTransferNetworkManager : NetworkManager {
     public const short TECHNIQUE_SENT = 5309;
 
     public UnityEvent OnTechniqueReceived, OnTechniqueSent;
+    public string UserName;
 
     private List<NetworkConnection> connections;
     private NetworkDiscovery networkDiscovery;
@@ -24,22 +25,17 @@ public class FileTransferNetworkManager : NetworkManager {
 
         string techniqueJson = JsonUtility.ToJson(t);
 
-        NetworkWriter writer = new NetworkWriter();
-        writer.Write(techniqueJson);
-
-        StringMessage m = new StringMessage();
-        m.Serialize(writer);
-
         foreach (NetworkConnection conn in connections) {
-            conn.Send(TECHNIQUE_SENT, m);
+            SendString(TECHNIQUE_SENT, conn, techniqueJson);
         }
 
         OnTechniqueSent?.Invoke();
     }
 
-    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId) {
-        base.OnServerAddPlayer(conn, playerControllerId);
+    public override void OnServerConnect(NetworkConnection conn) {
+        base.OnServerConnect(conn);
 
+        SendString(SENSEI_NAME, conn, UserName);
         connections.Add(conn);
     }
 
@@ -53,6 +49,17 @@ public class FileTransferNetworkManager : NetworkManager {
     public override void OnStartClient(NetworkClient client) {
         base.OnStartClient(client);
 
+        if (!networkDiscovery.StartAsClient()) {
+            Debug.Log("Couldn't start listening");
+        }
+    }
+
+    public override void OnStartServer() {
+        base.OnStartServer();
+
+        if (!networkDiscovery.StartAsServer()) {
+            Debug.Log("Couldn't start listening");
+        }
     }
 
     public new void StartHost() {
@@ -80,5 +87,15 @@ public class FileTransferNetworkManager : NetworkManager {
         StringMessage nameMsg = msg.ReadMessage<StringMessage>();
 
         // TODO: do stuff with the name
+    }
+
+    private void SendString(short msgType, NetworkConnection conn, string msg) {
+        NetworkWriter writer = new NetworkWriter();
+        writer.Write(msg);
+
+        StringMessage stringMessage = new StringMessage();
+        stringMessage.Serialize(writer);
+
+        conn.Send(msgType, stringMessage);
     }
 }
