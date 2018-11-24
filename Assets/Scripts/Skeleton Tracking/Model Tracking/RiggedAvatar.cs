@@ -23,8 +23,16 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     [SerializeField] private bool isEnabled, isStudent;
     [SerializeField] private GameObject scorerPrefab;
 
+    [SerializeField] private bool defaultToUserTracker;
+    public bool DefaultToUserTracker {
+        get { return defaultToUserTracker; }
+        set { defaultToUserTracker = value; }
+    }
+
     void Start() {
-        SkeletonProvider = CurrentUserTracker.Instance;
+        if (DefaultToUserTracker) {
+            SkeletonProvider = CurrentUserTracker.Instance;
+        }
 
         foreach (RiggedModelJoint modelJoint in ModelJoints) {
             modelJoint.BaseRotOffset = modelJoint.Bone.rotation;
@@ -86,7 +94,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
             foreach (RiggedModelJoint joint in ModelJoints) {
                 joint.SetTraining(isTraining);
             }
-        }
+        } 
     }
 
     private void PositionSkeleton(Skeleton s) {
