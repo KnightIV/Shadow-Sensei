@@ -952,6 +952,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1526891569937602, guid: bd1f5128cbad26246b8140b9ff901bc5,
         type: 2}
+    - target: {fileID: 114379227601579138, guid: b8319257327a59342b743199f894e7ec,
+        type: 2}
+      propertyPath: defaultToUserTracker
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8319257327a59342b743199f894e7ec, type: 2}
   m_IsPrefabAsset: 0
@@ -2565,6 +2570,7 @@ MonoBehaviour:
   TorsoZ: 25
   JointTrackerOffsetDistance: {x: 0, y: 0, z: 0}
   JointTrackers: []
+  defaultToUserTracker: 0
 --- !u!114 &873813600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5982,6 +5988,7 @@ MonoBehaviour:
   TorsoZ: 25
   JointTrackerOffsetDistance: {x: 0, y: 0, z: 0}
   JointTrackers: []
+  defaultToUserTracker: 0
 --- !u!114 &2080357589
 MonoBehaviour:
   m_ObjectHideFlags: 0
