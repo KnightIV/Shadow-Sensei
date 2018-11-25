@@ -716,12 +716,12 @@ Prefab:
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
       propertyPath: StatesToLayout.Array.data[0].State
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
       propertyPath: StatesToLayout.Array.data[1].State
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
@@ -736,7 +736,7 @@ Prefab:
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
       propertyPath: StatesToLayout.Array.data[2].State
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
@@ -746,12 +746,12 @@ Prefab:
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
       propertyPath: CurrentState
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
       propertyPath: StatesToLayout.Array.data[3].State
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114429382845104982, guid: f81bb5c2e1a5a0d4696e11c3b230dc81,
         type: 2}
@@ -1805,6 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ff78c13a46f9142937d7c407a5fddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuControl: {fileID: 2140949928}
 --- !u!1 &1008332681
 GameObject:
   m_ObjectHideFlags: 0
