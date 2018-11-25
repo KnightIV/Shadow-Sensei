@@ -11,8 +11,10 @@ public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointe
 
     public Color Color {
         set {
-            foreach (TextMeshProUGUI text in buttonTexts) {
-                text.color = value;
+            if (button.interactable) {
+                foreach (TextMeshProUGUI text in buttonTexts) {
+                    text.color = value;
+                }
             }
         }
     }
@@ -20,12 +22,14 @@ public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointe
     public Color DefaultColor, HighlightedColor, ClickedColor;
 
     private TextMeshProUGUI[] buttonTexts;
-    
-	void Start () {
-	    buttonTexts = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+    private Button button;
 
-	    Color = DefaultColor;
-	}
+    void Start() {
+        buttonTexts = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+        button = gameObject.GetComponent<Button>();
+
+        Color = DefaultColor;
+    }
 
     public void OnPointerEnter(PointerEventData eventData) {
         Color = HighlightedColor;
