@@ -21,6 +21,10 @@ public class SceneTransitioner : MonoBehaviour {
         GoToScene(SceneNames.TRAINING_SCENE);
     }
 
+    public void GoToTransferScene() {
+        GoToScene(SceneNames.TRANSFER_SCENE);
+    }
+
     public void GoToScene(string sceneName) {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }

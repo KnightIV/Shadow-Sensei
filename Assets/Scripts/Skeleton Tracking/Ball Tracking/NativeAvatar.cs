@@ -19,10 +19,19 @@ public class NativeAvatar : MonoBehaviour, IAvatar {
     public ISkeletonProvider SkeletonProvider { get; protected set; }
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
+    [SerializeField] private bool defaultToUserTracker;
+    public bool DefaultToUserTracker {
+        get { return defaultToUserTracker; }
+        set { defaultToUserTracker = value; }
+    }
+
     void Start() {
         JointType[] typeJoint = Enum.GetValues(typeof(JointType)).Cast<JointType>().ToArray();
         JointTrackers = new JointTracker[typeJoint.Length];
-        SkeletonProvider = CurrentUserTracker.Instance;
+
+        if (DefaultToUserTracker) {
+            SkeletonProvider = CurrentUserTracker.Instance;
+        }
 
         Vector3 origin = new Vector3(TorsoX, TorsoY, TorsoZ);
 

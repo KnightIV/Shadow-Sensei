@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LoadListSetup : MonoBehaviour {
@@ -36,10 +37,11 @@ public class LoadListSetup : MonoBehaviour {
                     text.text = $"Name: {meta.TechniqueName}\n" +
                                 $"Recorded by: {meta.UserName}";
                 } else if (text.name == "UserStatsText") {
-                    string date = meta.LastAttemptedDateTime == default(DateTime) ? "N/A" : meta.LastAttemptedDateTime.ToShortDateString();
+                    bool shouldDisplayDefault = meta.LastAttemptedDateTime == default(DateTime);
+                    string date = shouldDisplayDefault ? "N/A" : meta.LastAttemptedDateTime.ToShortDateString();
                     text.text = $"Last attempted: {date}\n" +
-                                $"Last Score: {(int) meta.LastScorePercent}%\n" +
-                                $"Best Score: {(int) meta.BestScorePercent}%";
+                                $"Last Score: {(shouldDisplayDefault ? "N/A" : (int) meta.LastScorePercent + "%")}\n" +
+                                $"Best Score: {(shouldDisplayDefault ? "N/A" : (int) meta.BestScorePercent + "%")}%";
                 }
             }
 
