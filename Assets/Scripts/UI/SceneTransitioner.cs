@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitioner : MonoBehaviour {
 
+    [SerializeField] private MenuControl menuControl;
+
     public void GoToMainMenuScene() {
         GoToScene(SceneNames.MAIN_MENU_SCENE);
     }
@@ -26,6 +28,17 @@ public class SceneTransitioner : MonoBehaviour {
     }
 
     public void GoToScene(string sceneName) {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        //SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+        StartCoroutine(LoadSceneAsync(sceneName));
     }
+
+    private IEnumerator LoadSceneAsync(string sceneName) {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+        menuControl.OnStateChanged(MenuStates.LoadingScene, false);
+        while (!asyncLoad.isDone) {
+            yield return null;
+        }
+    } 
 }
