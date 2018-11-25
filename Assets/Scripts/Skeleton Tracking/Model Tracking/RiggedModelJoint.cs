@@ -18,7 +18,8 @@ public class RiggedModelJoint {
     [HideInInspector] public Quaternion BaseRotOffset;
     
     [SerializeField] private GameObject scoreGameObject;
-    [SerializeField] private MeshRenderer scorerRenderer;
+
+    private MeshRenderer scorerRenderer;
 
     public void Colorize(Color c) {
         scorerRenderer.material.color = c;
@@ -31,12 +32,14 @@ public class RiggedModelJoint {
         this.scoreGameObject.transform.parent = Bone;
         this.scoreGameObject.transform.localPosition = Vector3.zero;
 
+        if (JointType == JointType.Waist || JointType == JointType.Torso) {
+            this.scoreGameObject.transform.localScale *= 2;
+        }
+
         SetTraining(false);
     }
 
     public void SetTraining(bool isTraining) {
-        //scoreGameObject.SetActive(isTraining);
-        //scorerRenderer.enabled = isTraining;
         Color c = isTraining ? scorerRenderer.material.color : Color.clear;
         Colorize(c);
     }
@@ -45,15 +48,5 @@ public class RiggedModelJoint {
         Joint joint = s.GetJoint(JointType);
         Quaternion jointOrientation = Quaternion.Inverse(CalibrationInfo.SensorOrientation) * joint.ToQuaternionMirrored() * BaseRotOffset;
         Bone.rotation = jointOrientation;
-
-        //if (scoreGameObject != null) {
-        //    //scoreGameObject.transform.localScale = boneRenderer.bounds.size;
-
-        //    //scoreGameObject.transform.localScale = Bone.localScale;
-        //    //scoreGameObject.transform.position = Bone.position;
-        //    //scoreGameObject.transform.rotation = jointOrientation;
-
-        //    ArrangeCylinder();
-        //}
     }
 }
