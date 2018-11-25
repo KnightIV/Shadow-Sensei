@@ -3,7 +3,9 @@
 [Flags]
 public enum MenuStates {
 
+    // General
     None,
+    LoadingScene,
 
     // MainMenu Scene
     MainMenu,
@@ -20,5 +22,8 @@ public enum MenuStates {
     EditingMenu,
     TextDataInput,  
     ExportFinished,
-    QuitEdit
+    QuitEdit,
+
+    // Recording Scene
+    Recording
 }
