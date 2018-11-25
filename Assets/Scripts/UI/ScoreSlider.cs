@@ -10,7 +10,7 @@ public class ScoreSlider : MonoBehaviour {
     private Slider scoreBar;
     private Image fill;
 
-	void Awake() {
+	void Start() {
 	    scoreBar = gameObject.GetComponent<Slider>();
 	    fill = gameObject.GetComponentsInChildren<Image>().First(f => f.name == "Fill");
 	}
