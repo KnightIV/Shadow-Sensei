@@ -23,6 +23,7 @@ public enum MenuStates {
     TextDataInput,  
     ExportFinished,
     QuitEdit,
+    ErrorEdit,
 
     // Recording Scene
     Recording
