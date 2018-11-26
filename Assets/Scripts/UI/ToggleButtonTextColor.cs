@@ -40,7 +40,9 @@ public class ToggleButtonTextColor : MonoBehaviour, IPointerDownHandler, IPointe
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        Color = ClickedColor;
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            Color = ClickedColor;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData) {

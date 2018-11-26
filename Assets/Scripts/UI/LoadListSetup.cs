@@ -30,7 +30,7 @@ public class LoadListSetup : MonoBehaviour {
             Button button = techniqueGameObject.GetComponent<Button>();
             TextMeshProUGUI[] texts = button.GetComponentsInChildren<TextMeshProUGUI>();
 
-            button.onClick.RemoveAllListeners();
+            //button.onClick.RemoveAllListeners();
 
             foreach (TextMeshProUGUI text in texts) {
                 if (text.name == "TechniqueDataText") {
@@ -45,11 +45,23 @@ public class LoadListSetup : MonoBehaviour {
                 }
             }
 
-            button.onClick.AddListener(() => {
-                Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
-                TrainingActions.Init(loadedTechnique);
-                MenuControl.OnStateChanged(MenuStates.TrainingPreview);
-            });
+            //button.onClick.AddListener(() => {
+            //    Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
+            //    TrainingActions.Init(loadedTechnique);
+            //    MenuControl.OnStateChanged(MenuStates.TrainingPreview);
+            //});
+
+            if (techniqueGameObject.GetComponent<ClickListener>() == null) {
+                ClickListener clickListener = techniqueGameObject.AddComponent<ClickListener>();
+                clickListener.OnRightClick += delegate {
+                    Debug.Log($"{meta.TechniqueName} right clicked");
+                };
+                clickListener.OnLeftClick += delegate {
+                    Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
+                    TrainingActions.Init(loadedTechnique);
+                    MenuControl.OnStateChanged(MenuStates.TrainingPreview);
+                };
+            }
         }
     }
 }
