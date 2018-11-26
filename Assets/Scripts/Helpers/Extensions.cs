@@ -18,15 +18,4 @@ public static class Extensions {
     public static float Squared(this float f) {
         return Mathf.Pow(f, 2);
     }
-
-    public static Color Average(this Color c, params Color[] colors) {
-        Color average = c;
-
-        foreach (Color color in colors) {
-            average += color;
-        }
-
-        average /= colors.Length + 1;
-        return average;
-    }
 }
