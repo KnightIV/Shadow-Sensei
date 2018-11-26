@@ -32,9 +32,13 @@ public class RiggedModelJoint {
         this.scoreGameObject.transform.parent = Bone;
         this.scoreGameObject.transform.localPosition = Vector3.zero;
 
-        if (JointType == JointType.Waist || JointType == JointType.Torso) {
+        if (JointType == JointType.Waist) {
             this.scoreGameObject.transform.localScale *= 2;
+        } else if (JointType == JointType.Torso) {
+            this.scoreGameObject.transform.localScale *= 2.3f;
         }
+
+        //scorerRenderer.material.color = Color.green;
 
         SetTraining(false);
     }
