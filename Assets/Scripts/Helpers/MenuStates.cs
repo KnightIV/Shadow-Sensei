@@ -17,6 +17,8 @@ public enum MenuStates {
     Training,
     TrainingFinished,
     QuitTraining,
+    DeleteTechnique,
+    TechniqueDeleted,
 
     // PlaybackEdit Scene
     EditingMenu,
