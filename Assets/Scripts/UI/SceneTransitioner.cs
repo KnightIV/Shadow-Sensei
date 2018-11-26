@@ -28,9 +28,9 @@ public class SceneTransitioner : MonoBehaviour {
     }
 
     public void GoToScene(string sceneName) {
-        //SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
-        StartCoroutine(LoadSceneAsync(sceneName));
+        //StartCoroutine(LoadSceneAsync(sceneName));
     }
 
     private IEnumerator LoadSceneAsync(string sceneName) {
