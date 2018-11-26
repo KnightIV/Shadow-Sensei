@@ -25,20 +25,17 @@ public class RiggedModelJoint {
         scorerRenderer.material.color = c;
     }
 
-    // ReSharper disable once ParameterHidesMember
-    public void InitStudent(GameObject scoreGameObject) {
-        this.scoreGameObject = scoreGameObject;
-        scorerRenderer = this.scoreGameObject.GetComponent<MeshRenderer>();
-        this.scoreGameObject.transform.parent = Bone;
-        this.scoreGameObject.transform.localPosition = Vector3.zero;
+    public void InitStudent(GameObject scorer) {
+        scoreGameObject = scorer;
+        scorerRenderer = scoreGameObject.GetComponent<MeshRenderer>();
+        scoreGameObject.transform.parent = Bone;
+        scoreGameObject.transform.localPosition = Vector3.zero;
 
         if (JointType == JointType.Waist) {
-            this.scoreGameObject.transform.localScale *= 2;
+            scoreGameObject.transform.localScale *= 2;
         } else if (JointType == JointType.Torso) {
-            this.scoreGameObject.transform.localScale *= 2.3f;
+            scoreGameObject.transform.localScale *= 2.3f;
         }
-
-        //scorerRenderer.material.color = Color.green;
 
         SetTraining(false);
     }
