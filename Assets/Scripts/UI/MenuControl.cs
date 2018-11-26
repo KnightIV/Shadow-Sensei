@@ -68,6 +68,7 @@ public class MenuControl : MonoBehaviour {
     public void GoToPreviousState() {
         if (prevStateIndexes.Any()) {
             OnStateChanged(StatesToLayout[prevStateIndexes.Pop()].State);
+            prevStateIndexes.Pop();
         }
     }
 
