@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class LoadListSetup : MonoBehaviour {
 
+    public const string DELETE = "Are you sure you want to delete {0}?";
+
     public GameObject ButtonPrefab;
     public MenuControl MenuControl;
     public TrainingActions TrainingActions;
@@ -45,16 +47,10 @@ public class LoadListSetup : MonoBehaviour {
                 }
             }
 
-            //button.onClick.AddListener(() => {
-            //    Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
-            //    TrainingActions.Init(loadedTechnique);
-            //    MenuControl.OnStateChanged(MenuStates.TrainingPreview);
-            //});
-
             if (techniqueGameObject.GetComponent<ClickListener>() == null) {
                 ClickListener clickListener = techniqueGameObject.AddComponent<ClickListener>();
                 clickListener.OnRightClick += delegate {
-                    Debug.Log($"{meta.TechniqueName} right clicked");
+                    Debug.Log(String.Format(DELETE, meta.TechniqueName));
                 };
                 clickListener.OnLeftClick += delegate {
                     Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);
