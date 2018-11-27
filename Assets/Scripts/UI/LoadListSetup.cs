@@ -50,7 +50,7 @@ public class LoadListSetup : MonoBehaviour {
                     string date = shouldDisplayDefault ? "N/A" : meta.LastAttemptedDateTime.ToShortDateString();
                     text.text = $"Last attempted: {date}\n" +
                                 $"Last Score: {(shouldDisplayDefault ? "N/A" : (int) meta.LastScorePercent + "%")}\n" +
-                                $"Best Score: {(shouldDisplayDefault ? "N/A" : (int) meta.BestScorePercent + "%")}%";
+                                $"Best Score: {(shouldDisplayDefault ? "N/A" : (int) meta.BestScorePercent + "%")}";
                 }
             }
 
