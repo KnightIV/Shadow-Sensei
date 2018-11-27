@@ -11,5 +11,6 @@ public class PlaybackEditSetup : MonoBehaviour {
 	void Start () {
         IAvatar playbackAvatar = RiggedPlaybackAvatar as IAvatar ?? PlaybackAvatar;
         playbackAvatar.SwapSkeletonProvider(Playback);
+        Playback.Reset();
 	}
 }
