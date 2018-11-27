@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,12 +15,20 @@ public class LoadListSetup : MonoBehaviour {
     public TrainingActions TrainingActions;
     public VerticalLayoutGroup TechniqueLayout;
 
+    [SerializeField] private TextMeshProUGUI promptToDelete;
+
     void Start() {
         SetupList();
     }
 
     public void SetupList() {
         IEnumerable<TechniqueMetaData> metaDataCollection = TechniqueFileHelper.GetAllTechniquesMeta();
+
+        foreach (Transform child in TechniqueLayout.transform) {
+            if (!metaDataCollection.Any(t => t.TechniqueName == child.name)) {
+                Destroy(child.gameObject);
+            }
+        }
 
         foreach (TechniqueMetaData meta in metaDataCollection) {
             GameObject techniqueGameObject = GameObject.Find(meta.TechniqueName);
@@ -31,8 +40,6 @@ public class LoadListSetup : MonoBehaviour {
 
             Button button = techniqueGameObject.GetComponent<Button>();
             TextMeshProUGUI[] texts = button.GetComponentsInChildren<TextMeshProUGUI>();
-
-            //button.onClick.RemoveAllListeners();
 
             foreach (TextMeshProUGUI text in texts) {
                 if (text.name == "TechniqueDataText") {
@@ -50,7 +57,10 @@ public class LoadListSetup : MonoBehaviour {
             if (techniqueGameObject.GetComponent<ClickListener>() == null) {
                 ClickListener clickListener = techniqueGameObject.AddComponent<ClickListener>();
                 clickListener.OnRightClick += delegate {
-                    Debug.Log(String.Format(DELETE, meta.TechniqueName));
+                    promptToDelete.text = String.Format(DELETE, meta.TechniqueName);
+                    VariableHolder.TechniqueToDelete = meta.TechniqueName;
+
+                    MenuControl.OnStateChanged(MenuStates.DeleteTechnique, false);
                 };
                 clickListener.OnLeftClick += delegate {
                     Technique loadedTechnique = TechniqueFileHelper.Load(meta.TechniqueName);

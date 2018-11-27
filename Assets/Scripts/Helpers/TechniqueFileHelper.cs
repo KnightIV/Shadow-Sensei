@@ -72,7 +72,7 @@ public static class TechniqueFileHelper {
 
     public static IEnumerable<TechniqueMetaData> GetAllTechniquesMeta() {
         if (!Directory.Exists(MetaDataFolder)) {
-            throw new InvalidOperationException("could not find meta directory");
+            return new List<TechniqueMetaData>();
         }
 
         string[] files = Directory.GetFiles(MetaDataFolder);
@@ -97,5 +97,21 @@ public static class TechniqueFileHelper {
         }
 
         return JsonUtility.FromJson<TechniqueMetaData>(File.ReadAllText(techniquePath));
+    }
+
+    public static void DeleteTechnique(string techniqueName) {
+        if (!Directory.Exists(MetaDataFolder) || !Directory.Exists(SaveFolder)) {
+            throw new InvalidOperationException();
+        }
+
+        string savedTech = $"{SaveFolder}/{techniqueName}.ma";
+        string meta = $"{MetaDataFolder}/{techniqueName}.me";
+
+        if (!File.Exists(savedTech) || !File.Exists(meta)) {
+            throw new InvalidOperationException("technique does not exist on this computer");
+        }
+
+        File.Delete(savedTech);
+        File.Delete(meta);
     }
 }

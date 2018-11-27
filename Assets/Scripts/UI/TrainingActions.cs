@@ -16,6 +16,8 @@ public class TrainingActions : MonoBehaviour {
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FinalScoreBar;
 
+    [SerializeField] private TextMeshProUGUI deletedConfirmText;
+
     private Technique technique;
     private SkeletonComparer comparer;
     private IAvatar PlaybackAvatar, UserAvatar;
@@ -51,5 +53,9 @@ public class TrainingActions : MonoBehaviour {
         TechniqueFileHelper.RegisterAttempt(technique, totalScore);
         FinalScoreBar.UpdateScore(totalScore);
     }
-}
 
+    public void DeleteTechnique() {
+        TechniqueFileHelper.DeleteTechnique(VariableHolder.TechniqueToDelete);
+        deletedConfirmText.text = $"{VariableHolder.TechniqueToDelete} successfully deleted.";
+    }
+}
