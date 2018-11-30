@@ -8,6 +8,12 @@ using UnityEngine;
 [Serializable]
 public class ComparisonFrameData {
 
+    public static readonly ComparisonFrameData Zero = new ComparisonFrameData {
+        JointScores = new Dictionary<JointType, float> {
+            { JointType.None, 0 }
+        }
+    };
+
     public Dictionary<JointType, float> JointScores;
 
     public float TotalScore {
@@ -15,7 +21,7 @@ public class ComparisonFrameData {
     }
 
     public float TotalScorePercent {
-        get { return TotalScore * 100; }
+        get { return TotalScore.ToPercent(); }
     }
 
     public float this[JointType key] {
