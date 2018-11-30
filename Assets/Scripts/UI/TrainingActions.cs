@@ -16,7 +16,7 @@ public class TrainingActions : MonoBehaviour {
     public AnimationCurveProvider CurveProvider;
     public ScoreSlider FinalScoreBar;
 
-    [SerializeField] private TextMeshProUGUI deletedConfirmText;
+    [SerializeField] private TextMeshProUGUI deletedConfirmText, newRecordLabel;
 
     private Technique technique;
     private SkeletonComparer comparer;
@@ -50,7 +50,7 @@ public class TrainingActions : MonoBehaviour {
         float totalScore = data.TotalScore;
         technique.LastAttemptedDateTime = DateTime.Now;
 
-        TechniqueFileHelper.RegisterAttempt(technique, totalScore);
+        newRecordLabel.enabled = TechniqueFileHelper.RegisterAttempt(technique, totalScore);
         FinalScoreBar.UpdateScore(totalScore);
     }
 
