@@ -56,6 +56,7 @@ public class LoadListSetup : MonoBehaviour {
 
             if (techniqueGameObject.GetComponent<ClickListener>() == null) {
                 ClickListener clickListener = techniqueGameObject.AddComponent<ClickListener>();
+
                 clickListener.OnRightClick += delegate {
                     promptToDelete.text = String.Format(DELETE, meta.TechniqueName);
                     VariableHolder.TechniqueToDelete = meta.TechniqueName;
