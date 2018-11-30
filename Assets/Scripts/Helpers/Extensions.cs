@@ -18,4 +18,8 @@ public static class Extensions {
     public static float Squared(this float f) {
         return Mathf.Pow(f, 2);
     }
+
+    public static float ToPercent(this float f) {
+        return f * 100f;
+    }
 }

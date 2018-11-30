@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -23,6 +21,6 @@ public class ComparisonData {
     }
 
     public float TotalScorePercent {
-        get { return TotalScore * 100; }
+        get { return TotalScore.ToPercent(); }
     }
 }
