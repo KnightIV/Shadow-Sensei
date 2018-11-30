@@ -21,9 +21,6 @@ public class AngleSkeletonComparer : SkeletonComparer {
     protected static float SolveForAngleC(float a, float b, float c) {
         float cos = (a.Squared() + b.Squared() - c.Squared()) / (2 * a * b);
         float acos = Mathf.Acos(Mathf.Clamp(cos, -1, 1));
-        //if (float.IsNaN(acos)) {
-        //    Debug.Log($"cos: {cos} | a: {a} | b: {b} | c: {c}");
-        //}
 
         return acos;
     }
@@ -60,22 +57,6 @@ public class AngleSkeletonComparer : SkeletonComparer {
                 float secondRatio = angle2 / angle1;
 
                 float preliminary = Math.Min(firstRatio, secondRatio);
-                //if (float.IsNaN(preliminary)) {
-                //    if (float.IsNaN(angle1)) {
-                //        Debug.Log($"a1: {a1} | {a1.magnitude}");
-                //        Debug.Log($"b1: {b1} | {b1.magnitude}");
-                //        Debug.Log($"c1: {c1} | {c1.magnitude}");
-                //    }
-                //    if (float.IsNaN(angle2)) {
-                //        Debug.Log($"a2: {a2} | {a2.magnitude}");
-                //        Debug.Log($"b2: {b2} | {b2.magnitude}");
-                //        Debug.Log($"c2: {c2} | {c2.magnitude}");
-                //    }
-
-                //    Debug.Log($"{adjacentJoints[0]} | {adjacentA1}");
-                //    Debug.Log($"{centerJoint} | {center1}");
-                //    Debug.Log($"{adjacentJoints[1]} | {adjacentB1}");
-                //} 
                 float score = curve.Evaluate(preliminary);
 
                 UpdateScore(centerJoint, score, preliminaryScoreTrackers);
