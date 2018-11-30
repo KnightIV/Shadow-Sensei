@@ -17,7 +17,7 @@ public class ScoreSlider : MonoBehaviour {
 
     public void UpdateScore(float score) {
         if (score > 1.0f || score < 0.0f) {
-            throw new ArgumentOutOfRangeException(nameof(score));
+            throw new ArgumentOutOfRangeException(nameof(score) + ": " + score);
         }
 
         scoreBar.value = Mathf.Lerp(scoreBar.minValue, scoreBar.maxValue, score);
