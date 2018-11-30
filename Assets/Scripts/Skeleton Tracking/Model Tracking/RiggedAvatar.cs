@@ -20,7 +20,7 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     public ISkeletonProvider SkeletonProvider { get; protected set; }
     public SerializableSkeleton CurSkeleton => SkeletonProvider.CurSkeleton;
 
-    [SerializeField] private bool isEnabled, isStudent;
+    [SerializeField] private bool isEnabled, isStudent, training;
     [SerializeField] private GameObject scorerPrefab;
 
     [SerializeField] private bool defaultToUserTracker;
@@ -60,23 +60,24 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
     }
 
     public void SetColor(JointType jointType, Color color) {
-        RiggedModelJoint joint = FindJoint(jointType);
-        joint?.Colorize(color);
+        FindJoint(jointType)?.Colorize(color);
     }
 
     public void SetColor(ComparisonFrameData comparison) {
-        foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
-            JointType type = result.Key;
-            float score = result.Value;
+        if (training) {
+            foreach (KeyValuePair<JointType, float> result in comparison.JointScores) {
+                JointType type = result.Key;
+                float score = result.Value;
 
-            Color color;
-            if (score < 0.5f) {
-                color = Color.Lerp(INCORRECT, MIDPOINT, score * 2);
-            } else {
-                color = Color.Lerp(MIDPOINT, CORRECT, (score - 0.5f) * 2);
+                Color color;
+                if (score < 0.5f) {
+                    color = Color.Lerp(INCORRECT, MIDPOINT, score * 2);
+                } else {
+                    color = Color.Lerp(MIDPOINT, CORRECT, (score - 0.5f) * 2);
+                }
+
+                SetColor(type, color);
             }
-
-            SetColor(type, color);
         }
     }
 
@@ -91,10 +92,12 @@ public class RiggedAvatar : MonoBehaviour, IAvatar {
 
     public void SetTraining(bool isTraining) {
         if (isStudent) {
+            training = isTraining;
+
             foreach (RiggedModelJoint joint in ModelJoints) {
                 joint.SetTraining(isTraining);
             }
-        } 
+        }
     }
 
     private void PositionSkeleton(Skeleton s) {
