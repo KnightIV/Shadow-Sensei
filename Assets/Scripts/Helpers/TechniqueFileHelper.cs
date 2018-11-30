@@ -29,10 +29,18 @@ public static class TechniqueFileHelper {
         File.WriteAllText(metaDataPath, techniqueMetaJson);
     }
 
-    public static void RegisterAttempt(Technique t, float attemptScore) {
+    /// <summary>
+    /// Updates the technique in the user's file system
+    /// </summary>
+    /// <param name="t">The technique attempted</param>
+    /// <param name="attemptScore">The user's attempt's score</param>
+    /// <returns>Whether or not the new attempt was a new record</returns>
+    public static bool RegisterAttempt(Technique t, float attemptScore) {
         if (!Directory.Exists(SaveFolder) || !Directory.Exists(MetaDataFolder)) {
             throw new InvalidOperationException($"SaveFolder exists: {Directory.Exists(SaveFolder)} | MetaDataFolder exists: {Directory.Exists(MetaDataFolder)}");
         }
+
+        bool newRecord = false;
 
         TechniqueMetaData meta = GetMetaData(t.TechniqueName);
         if (t.LastAttemptedDateTime > meta.LastAttemptedDateTime) {
@@ -40,12 +48,17 @@ public static class TechniqueFileHelper {
         }
 
         meta.LastScore = attemptScore;
-        meta.BestScore = Math.Max(meta.BestScore, attemptScore);
+        if (Mathf.RoundToInt(attemptScore.ToPercent()) > Mathf.RoundToInt(meta.BestScorePercent)) {
+            meta.BestScore = attemptScore;
+            newRecord = true;
+        }
 
         string metaJson = JsonUtility.ToJson(meta);
         string metaPath = $"{MetaDataFolder}/{meta.TechniqueName}.me";
 
         File.WriteAllText(metaPath, metaJson);
+
+        return newRecord;
     }
 
     public static Technique Load(string name) {
