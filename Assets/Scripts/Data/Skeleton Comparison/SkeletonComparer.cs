@@ -36,7 +36,12 @@ public abstract class SkeletonComparer {
         }
 
         Parallel.For(0, maxLength, i => {
-            ComparisonFrameData comparison = Compare(technique[i], userAttempt[i]);
+            ComparisonFrameData comparison;
+            if (technique[i] == null || userAttempt[i] == null) {
+                comparison = ComparisonFrameData.Zero;
+            } else {
+                comparison = Compare(technique[i], userAttempt[i]);
+            }
 
             lock (comparisonFrameData) {
                 comparisonFrameData.Add(comparison);
