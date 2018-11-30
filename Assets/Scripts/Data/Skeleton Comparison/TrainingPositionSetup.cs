@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class TrainingPositionSetup : MonoBehaviour {
 
+    public const float MIN_SCORE_THRESHOLD = 0.1f;
+
     public NativeAvatar UserNativeAvatar, TechniqueNativeAvatar;
     public RiggedAvatar UserRiggedAvatar, TechniqueRiggedAvatar;
 
@@ -42,14 +44,14 @@ public class TrainingPositionSetup : MonoBehaviour {
                 UserAvatar.SetColor(result);
                 totalScore = result.TotalScore;
 
-                if (1 - totalScore < 0.1f) {
+                if (1 - totalScore < MIN_SCORE_THRESHOLD) {
                     CountdownTimer.SetRunning(true);
                 } else {
                     CountdownTimer.SetRunning(false);
                     CountdownTimer.Reset();
                     CountdownTimer.Text = "Into Position";
                 }
-            }
+            } 
 
             ScoreBar.UpdateScore(totalScore);
         }
@@ -61,6 +63,7 @@ public class TrainingPositionSetup : MonoBehaviour {
         if (isEnabled) {
             TechniquePlayback.RefreshSkeletonFrames();
             TechniqueAvatar.SwapSkeletonProvider(TechniquePlayback);
+            CountdownTimer.Text = "Into Position";
         }
     }
 }
