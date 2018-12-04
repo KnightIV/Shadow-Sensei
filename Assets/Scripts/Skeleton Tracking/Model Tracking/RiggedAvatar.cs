@@ -9,8 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class RiggedAvatar : MonoBehaviour, IAvatar {
 
-    public static readonly Color INCORRECT = new Color(1, 0, 0, 0.7f);
-    public static readonly Color MIDPOINT = new Color(0.5f, 0, 0, 0.5f);
+    public static readonly Color INCORRECT = new Color(1, 0, 0, 0.9f);
+    public static readonly Color MIDPOINT = new Color(0.5f, 0, 0, 0.7f);
     public static readonly Color CORRECT = Color.clear;
 
     [Header("Rigged Model")] public RiggedModelJoint[] ModelJoints;
