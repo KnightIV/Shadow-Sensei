@@ -37,5 +37,6 @@ public enum MenuStates {
     MainMenuRegisterResult,
 
     // Online Scene
-    OnlineMenu
+    OnlineMenu,
+    OnlineTechniquesMenu
 }
