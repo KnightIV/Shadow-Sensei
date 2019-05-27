@@ -89,6 +89,8 @@ public class AngleSkeletonComparer : SkeletonComparer {
         } else {
             tracker.TotalScore += newScore;
             tracker.Count++;
+
+            //tracker.TotalScore = newScore;
         }
     }
 

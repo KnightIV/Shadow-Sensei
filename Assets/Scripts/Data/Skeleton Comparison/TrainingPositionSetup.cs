@@ -14,7 +14,7 @@ public class TrainingPositionSetup : MonoBehaviour {
     public SkeletonComparer Comparer;
     public CountdownTimer CountdownTimer;
     public Playback TechniquePlayback;
-    public AnimationCurveProvider CurveProvider;
+    public AnimationCurveProvider CurveProvider, RelaxedCurveProvider;
     public ScoreSlider ScoreBar;
 
     private bool isEnabled;
@@ -45,8 +45,10 @@ public class TrainingPositionSetup : MonoBehaviour {
                 totalScore = result.TotalScore;
 
                 if (1 - totalScore < MIN_SCORE_THRESHOLD) {
+                    Comparer.Curve = RelaxedCurveProvider.Curve;
                     CountdownTimer.SetRunning(true);
                 } else {
+                    Comparer.Curve = CurveProvider.Curve;
                     CountdownTimer.SetRunning(false);
                     CountdownTimer.Reset();
                     CountdownTimer.Text = "Into Position";
@@ -63,6 +65,7 @@ public class TrainingPositionSetup : MonoBehaviour {
         if (isEnabled) {
             TechniquePlayback.RefreshSkeletonFrames();
             TechniqueAvatar.SwapSkeletonProvider(TechniquePlayback);
+            Comparer.Curve = CurveProvider.Curve;
             CountdownTimer.Text = "Into Position";
         }
     }

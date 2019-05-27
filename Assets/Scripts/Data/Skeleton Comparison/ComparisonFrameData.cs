@@ -17,7 +17,14 @@ public class ComparisonFrameData {
     public Dictionary<JointType, float> JointScores;
 
     public float TotalScore {
-        get { return JointScores.Values.Sum() / JointScores.Count; }
+        get {
+            //return JointScores.Values.Sum() / JointScores.Count;
+
+            float weightedValueSum = JointScores.Sum(p => p.Value * DistanceFromLowestScore(p.Key));
+            float weightSum = JointScores.Keys.Sum(k => DistanceFromLowestScore(k));
+
+            return weightedValueSum / weightSum;
+        }
     }
 
     public float TotalScorePercent {
@@ -42,5 +49,11 @@ public class ComparisonFrameData {
 
     public ComparisonFrameData() {
         JointScores = new Dictionary<JointType, float>();
+    }
+
+    private int DistanceFromLowestScore(JointType type) {
+        List<JointType> orderedTypes = JointScores.OrderBy(p => p.Value).Select(p => p.Key).ToList();
+
+        return orderedTypes.Count - orderedTypes.IndexOf(type);
     }
 }

@@ -28,5 +28,14 @@ public enum MenuStates {
     ErrorEdit,
 
     // Recording Scene
-    Recording
+    Recording,
+
+    // Additional MainMenu Scene
+    MainMenuLogin,
+    MainMenuLoginResult,
+    MainMenuRegister, 
+    MainMenuRegisterResult,
+
+    // Online Scene
+    OnlineMenu
 }

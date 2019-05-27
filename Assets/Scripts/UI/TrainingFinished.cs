@@ -31,6 +31,7 @@ public class TrainingFinished : MonoBehaviour {
         UserAvatar.SetColor(comparison);
 
         float totalScore = comparison.TotalScore;
+        //float totalScore = Mathf.Sqrt(comparison.JointScores.Values.Min());
         FrameScoreBar.UpdateScore(totalScore);
     }
 

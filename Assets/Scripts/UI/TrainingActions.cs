@@ -47,6 +47,8 @@ public class TrainingActions : MonoBehaviour {
 
         ComparisonData data = comparer.Evaluate(technique);
 
+        //List<float> totalScores = data.FrameComparisons.Select(x => x.JointScores.Values.Min()).ToList();
+        //float totalScore = totalScores.Average();
         float totalScore = data.TotalScore;
         technique.LastAttemptedDateTime = DateTime.Now;
 

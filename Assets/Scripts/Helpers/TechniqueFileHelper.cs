@@ -58,6 +58,10 @@ public static class TechniqueFileHelper {
 
         File.WriteAllText(metaPath, metaJson);
 
+        string techniqueJson = JsonUtility.ToJson(t);
+        string techniquePath = $"{SaveFolder}/{t.TechniqueName}.ma";
+        File.WriteAllText(techniquePath, techniqueJson);
+
         return newRecord;
     }
 
@@ -76,7 +80,7 @@ public static class TechniqueFileHelper {
     public static Technique LoadClean(string name) {
         Technique t = Load(name);
 
-        t.LastAttemptedDateTime = default(DateTime);
+        t.LastAttemptedDateTime = default;
         t.Score = 0;
         t.UserAttemptFrames = null;
 

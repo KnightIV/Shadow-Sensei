@@ -27,6 +27,10 @@ public class SceneTransitioner : MonoBehaviour {
         GoToScene(SceneNames.TRANSFER_SCENE);
     }
 
+    public void GoToOnlineScene() {
+        GoToScene(SceneNames.ONLINE_SCENE);
+    }
+
     public void GoToScene(string sceneName) {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 

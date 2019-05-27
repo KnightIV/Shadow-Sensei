@@ -12,6 +12,11 @@ using nuitrack;
 public abstract class SkeletonComparer {
 
     protected AnimationCurve curve;
+
+    public AnimationCurve Curve {
+        set { curve = value; }
+    }
+
     protected object mutex = new object();
 
     public static SkeletonComparer GetComparer(AnimationCurve curve) {
@@ -19,7 +24,7 @@ public abstract class SkeletonComparer {
     }
 
     protected SkeletonComparer(AnimationCurve curve) {
-        this.curve = curve;
+        Curve = curve;
     }
 
     public ComparisonData Evaluate(IReadOnlyTechnique t) {

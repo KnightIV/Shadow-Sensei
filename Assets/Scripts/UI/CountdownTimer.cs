@@ -41,7 +41,7 @@ public class CountdownTimer : MonoBehaviour {
 
     void Start() {
         curCount = StartCount;
-        lastIntCount = Mathf.RoundToInt(curCount);
+        lastIntCount = Mathf.CeilToInt(curCount) + 1;
     }
 
     void FixedUpdate() {
@@ -50,8 +50,8 @@ public class CountdownTimer : MonoBehaviour {
                 curCount -= Time.fixedDeltaTime;
                 StepEvent?.Invoke(curCount);
 
-                if (lastIntCount > Mathf.RoundToInt(curCount)) {
-                    lastIntCount = Mathf.RoundToInt(curCount);
+                if (lastIntCount > Mathf.CeilToInt(curCount)) {
+                    lastIntCount = Mathf.CeilToInt(curCount);
                     WholeStepEvent?.Invoke(lastIntCount);
                 }
             } else {
@@ -67,9 +67,9 @@ public class CountdownTimer : MonoBehaviour {
     public void SetRunning(bool isRunning) {
         IsRunning = isRunning;
 
-        if (IsRunning) {
-            WholeStepEvent?.Invoke(lastIntCount);
-        }
+        //if (IsRunning) {
+        //    WholeStepEvent?.Invoke(lastIntCount);
+        //}
     }
 
     public void ResetAndRun() {
@@ -79,6 +79,7 @@ public class CountdownTimer : MonoBehaviour {
 
     public void Reset() {
         curCount = StartCount;
+        lastIntCount = Mathf.CeilToInt(curCount) + 1;
         UpdateText();
     }
 
@@ -103,6 +104,6 @@ public class CountdownTimer : MonoBehaviour {
     }
 
     private void UpdateText() {
-        Text = Mathf.RoundToInt(curCount).ToString();
+        Text = Mathf.CeilToInt(curCount).ToString();
     }
 }

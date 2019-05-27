@@ -16,7 +16,8 @@ public class ComparisonData {
             if (FrameComparisons.Length == 0) {
                 Debug.Log("FrameComparisons is empty");
             }
-            return FrameComparisons.Sum(f => f.TotalScore) / FrameComparisons.Length;
+            //return FrameComparisons.Sum(f => f.TotalScore) / FrameComparisons.Length;
+            return FrameComparisons.Average(c => c.TotalScore);
         }
     }
 

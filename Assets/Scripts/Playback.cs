@@ -67,11 +67,7 @@ public class Playback : MonoBehaviour, ISkeletonProvider {
 
                 TrimSlider.ResetToMaxRange();
             }
-
-            Debug.Log("SkeletonFrames successfully loaded");
-        } else {
-            Debug.Log("SkeletonFrames couldn't be loaded");
-        }
+        } 
     }
 
     public void TogglePlay() {
