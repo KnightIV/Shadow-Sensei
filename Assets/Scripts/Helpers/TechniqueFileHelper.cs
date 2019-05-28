@@ -19,6 +19,8 @@ public static class TechniqueFileHelper {
             Directory.CreateDirectory(MetaDataFolder);
         }
 
+        t.ownerArtistId = VariableHolder.User.UserID;
+
         string techniqueJson = JsonUtility.ToJson(t);
         string techniqueMetaJson = JsonUtility.ToJson((TechniqueMetaData) t);
 
@@ -40,6 +42,7 @@ public static class TechniqueFileHelper {
             throw new InvalidOperationException($"SaveFolder exists: {Directory.Exists(SaveFolder)} | MetaDataFolder exists: {Directory.Exists(MetaDataFolder)}");
         }
 
+        t.artistId = VariableHolder.User.UserID;
         bool newRecord = false;
 
         TechniqueMetaData meta = GetMetaData(t.TechniqueName);
@@ -101,6 +104,17 @@ public static class TechniqueFileHelper {
         }
 
         return metaData;
+    }
+
+    public static IEnumerable<TechniqueMetaData> GetAllAttemptedTechniquesMeta() {
+        return GetAllTechniquesMeta().Where(m => m.HasBeenAttempted);
+    }
+
+    public static IEnumerable<TechniqueMetaData> GetCleanTechniquesMeta() {
+        return GetAllTechniquesMeta().Select(m => {
+            m.LastAttemptedTicks = default(DateTime).Ticks;
+            return m;
+        });
     }
 
     public static TechniqueMetaData GetMetaData(string techniqueName) {
