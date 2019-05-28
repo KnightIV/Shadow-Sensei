@@ -58,6 +58,7 @@ public class MainMenu : MonoBehaviour {
         yield return loginRequest.SendWebRequest();
 
         if (loginRequest.responseCode == 200) {
+            VariableHolder.User.UserID = int.Parse(loginRequest.downloadHandler.text);
             VariableHolder.User.Username = username;
             VariableHolder.User.Password = password;
 
@@ -78,12 +79,12 @@ public class MainMenu : MonoBehaviour {
         yield return registerRequest.SendWebRequest();
 
         if (registerRequest.responseCode == 200) {
-            VariableHolder.User.Username = userRegister.username;
-            VariableHolder.User.Password = userRegister.password;
+            //VariableHolder.User.Username = userRegister.username;
+            //VariableHolder.User.Password = userRegister.password;
 
-            logInButtonText.text = "Log Out";
-            onlineButton.interactable = true;
-            registerButton.interactable = false;
+            //logInButtonText.text = "Log Out";
+            //onlineButton.interactable = true;
+            //registerButton.interactable = false;
             registerResultLabel.text = "Registered successfully.";
         } else {
             registerResultLabel.text = "Username or email already taken."; //TODO: maybe make a specific error message
