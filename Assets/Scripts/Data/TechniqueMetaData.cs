@@ -22,6 +22,10 @@ public class TechniqueMetaData {
         get { return LastScore * 100; }
     }
 
+    public bool HasBeenAttempted {
+        get { return LastAttemptedDateTime != default; }
+    }
+
     public static implicit operator TechniqueMetaData(Technique t) {
         return new TechniqueMetaData {
             TechniqueName = t.TechniqueName,
