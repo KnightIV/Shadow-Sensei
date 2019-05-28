@@ -14,6 +14,9 @@ public class Technique : IReadOnlyTechnique {
     public DateTime LastAttemptedDateTime;
     public float Score;
 
+    public long ownerArtistId;
+    public long artistId;
+
     public Skeleton[] ReadTechniqueFrames => TechniqueFrames.Select(s => (Skeleton) s).ToArray();
     public Skeleton[] ReadUserAttemptFrames => UserAttemptFrames.Select(s => (Skeleton) s).ToArray();
 
