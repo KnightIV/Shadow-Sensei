@@ -46,7 +46,7 @@ public class LoadListSetup : MonoBehaviour {
                     text.text = $"Name: {meta.TechniqueName}\n" +
                                 $"Recorded by: {meta.UserName}";
                 } else if (text.name == "UserStatsText") {
-                    bool shouldDisplayDefault = meta.LastAttemptedDateTime == default(DateTime);
+                    bool shouldDisplayDefault = !meta.HasBeenAttempted;
                     string date = shouldDisplayDefault ? "N/A" : meta.LastAttemptedDateTime.ToShortDateString();
                     text.text = $"Last attempted: {date}\n" +
                                 $"Last Score: {(shouldDisplayDefault ? "N/A" : (int) meta.LastScorePercent + "%")}\n" +
@@ -58,7 +58,7 @@ public class LoadListSetup : MonoBehaviour {
                 ClickListener clickListener = techniqueGameObject.AddComponent<ClickListener>();
 
                 clickListener.OnRightClick += delegate {
-                    promptToDelete.text = String.Format(DELETE, meta.TechniqueName);
+                    promptToDelete.text = string.Format(DELETE, meta.TechniqueName);
                     VariableHolder.TechniqueToDelete = meta.TechniqueName;
 
                     MenuControl.OnStateChanged(MenuStates.DeleteTechnique, false);
