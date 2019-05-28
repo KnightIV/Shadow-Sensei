@@ -38,5 +38,6 @@ public enum MenuStates {
 
     // Online Scene
     OnlineMenu,
-    OnlineTechniquesMenu
+    OnlineTechniquesMenu,
+    OnlineUploadTechniqueMenu
 }
